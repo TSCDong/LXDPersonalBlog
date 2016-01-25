@@ -1,0 +1,107 @@
+//
+//  LXDPrefixHeader.pch
+//  LXDPersonalBlog
+//
+//  Created by 林欣达 on 16/1/12.
+//  Copyright © 2016年 SindriLin. All rights reserved.
+//
+
+#ifndef LXDPrefixHeader_pch
+#define LXDPrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
+#import "UIView+LXDEasyFrame.h"
+
+/// app主色
+#define LXD_MAIN_COLOR [UIColor colorWithRed: 40/255. green: 172/255. blue: 133/255. alpha: 1]
+/// 屏幕宽度
+#define LXD_SCREEN_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
+/// 屏幕高度
+#define LXD_SCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
+/// 错误调试输出
+#define LXD_ERROR_LOG(error) \
+    NSLog(@"error happen <method: %s line: %d> error: %@", __FUNCTION__, __LINE__, error);
+/// 判断系统版本是否8.0以上
+#define LXD_IOS_8   \
+    ([UIDevice currentDevice].systemVersion.doubleValue >= 8.0)
+/// 空字符串
+#define LXD_EMPTY_STRING @""
+
+/// 屏幕尺寸比例调整
+#define LXD_SCALE_4_0   (LXD_SCREEN_WIDTH / 320.)
+#define LXD_SCALE_4_7   (LXD_SCREEN_WIDTH / 375.)
+#define LXD_SCALE_5_5   (LXD_SCREEN_WIDTH / 424.)
+
+/// HUD动画
+#define MBHUDSHOW   \
+    {   \
+        [MBProgressHUD showHUDAddedTo: self.view animated: YES];    \
+    }
+#define MBHUDHIDE \
+    {   \
+        [MBProgressHUD hideAllHUDsForView: self.view animated: YES];  \
+    }
+
+/// CA动画关键key
+#define LXD_SCALE_KEY @"transform.scale"
+#define LXD_ROTATE_KEY @"transform.rotation"
+
+
+
+/// 获取图片格式名
+static inline NSString * kPNG() { return [NSString stringWithFormat: @".png"]; }
+static inline NSString * KJPEG() { return [NSString stringWithFormat: @".jpeg"]; }
+static inline NSString * kJPG() { return [NSString stringWithFormat: @".jpg"]; }
+/// 获取图片比例后缀
+static inline NSString * kImageScale() {
+    NSInteger scale = floor([UIScreen mainScreen].scale);
+    if (scale == 2) { return [NSString stringWithFormat: @"@2x"]; }
+    else if (scale == 3) { return [NSString stringWithFormat: @"@3x"]; }
+    else { return LXD_EMPTY_STRING; }
+}
+/// 加载图片（无缓存）
+static inline UIImage * kImageNamed(NSString * imageName) {
+    NSMutableString * name = imageName.mutableCopy;
+    NSString * imageType;
+    if ([name hasSuffix: kPNG()]) { imageType = kPNG(); }
+    else if ([name hasSuffix: KJPEG()]) { imageType = KJPEG(); }
+    else if ([name hasSuffix: kJPG()]) { imageType = kJPG(); }
+    if (imageType) {
+        [name deleteCharactersInRange: NSMakeRange(name.length - imageType.length, imageType.length)];
+    }
+    imageType = imageType ?: kPNG();
+    
+    if ([name hasSuffix: [NSString stringWithFormat: @"@2x"]] || [name hasSuffix: [NSString stringWithFormat: @"@3x"]]) {
+        [name deleteCharactersInRange: NSMakeRange(name.length - 3, 3)];
+    }
+    
+    [name appendString: kImageScale()];
+    [name appendString: imageType];
+    return [UIImage imageWithContentsOfFile: [NSString stringWithFormat: @"%@/%@", [NSBundle mainBundle].bundlePath, name]];
+}
+
+
+/// 使用rgb值创建颜色
+static inline UIColor * kRGB(CGFloat red, CGFloat green, CGFloat blue) {
+    return [UIColor colorWithRed: red/255. green: green/255. blue: blue/255. alpha: 1];
+}
+
+/// 存储解析后数据列表的关键字
+FOUNDATION_EXPORT NSString * const LXDArticleListKey;
+
+/// 通用的回调block
+typedef void(^LXDCommonHandler)(id object, NSInteger status, NSDictionary * userInfo);
+
+/// 通用的状态码
+typedef enum
+{
+    LXDStatusFailed = -1,
+    LXDStatusCancel = 0,
+    LXDStatusSuccess = 1,
+} LXDCommonStatus;
+
+/// 博客地址
+static NSString const * const LXDBlogAddress = @"http://sindrilin.com";
+
+#endif
