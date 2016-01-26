@@ -8,7 +8,8 @@
 
 #import "LXDAlphaNavigationController.h"
 
-NSString * LXDNavigationBarHeightDidChangeNotification = @"LXDNavigationBarHeightDidChangeNotification";
+NSString * const LXDNavigationBarHeightDidChangeNotification = @"LXDNavigationBarHeightDidChangeNotification";
+NSString * const LXDClickNavigationBarNotification = @"LXDClickNavigationBarNotification";
 
 @interface LXDAlphaNavigationController ()
 
@@ -44,6 +45,7 @@ NSString * LXDNavigationBarHeightDidChangeNotification = @"LXDNavigationBarHeigh
     UIImage * alphaImage = kImageNamed(@"nav_alpha_image");
     [self.navigationBar setBackgroundImage: alphaImage forBarMetrics: UIBarMetricsCompact];
     self.navigationBar.layer.masksToBounds = YES;
+    [self.navigationBar addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(clickNavigationBar)]];
     
     [self.view insertSubview: self.backgroundView belowSubview: self.navigationBar];
     [self.navigationBar setTitleTextAttributes: @{
@@ -53,6 +55,14 @@ NSString * LXDNavigationBarHeightDidChangeNotification = @"LXDNavigationBarHeigh
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationBar.tintColor = [UIColor whiteColor];
     self.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
+}
+
+
+#pragma mark - Event
+/// 点击导航栏回调
+- (void)clickNavigationBar
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName: LXDClickNavigationBarNotification object: self];
 }
 
 

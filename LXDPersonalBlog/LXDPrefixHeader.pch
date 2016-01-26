@@ -13,8 +13,10 @@
 #import "MBProgressHUD.h"
 #import "UIView+LXDEasyFrame.h"
 
+#define LXD_EXPORT FOUNDATION_EXTERN
+
 /// app主色
-#define LXD_MAIN_COLOR [UIColor colorWithRed: 40/255. green: 172/255. blue: 133/255. alpha: 1]
+#define LXD_MAIN_COLOR [UIColor colorWithRed: 37/255. green: 148/255. blue: 211/255. alpha: 1]
 /// 屏幕宽度
 #define LXD_SCREEN_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
 /// 屏幕高度
@@ -88,7 +90,7 @@ static inline UIColor * kRGB(CGFloat red, CGFloat green, CGFloat blue) {
 }
 
 /// 存储解析后数据列表的关键字
-FOUNDATION_EXPORT NSString * const LXDArticleListKey;
+LXD_EXPORT NSString * const LXDArticleListKey;
 
 /// 通用的回调block
 typedef void(^LXDCommonHandler)(id object, NSInteger status, NSDictionary * userInfo);

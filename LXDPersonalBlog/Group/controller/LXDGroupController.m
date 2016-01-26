@@ -65,13 +65,20 @@ static const CGFloat kArticleCellHeight = 85.;
     if (self.manager.allArticles == nil) {
         MBHUDSHOW
     }
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(articleFinishRequest) name: LXDFinishedRequestNotification object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationToUpdateArticleCategories) name: LXDFinishedRequestNotification object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationToScrollToTop) name: LXDClickNavigationBarNotification object: nil];
 }
 
 - (void)viewDidAppear: (BOOL)animated
 {
     [super viewDidAppear: animated];
     [self setupTableView];
+}
+
+- (void)viewDidDisappear: (BOOL)animated
+{
+    [super viewDidDisappear: animated];
+    [[NSNotificationCenter defaultCenter] removeObserver: self name: LXDClickNavigationBarNotification object: nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,7 +94,7 @@ static const CGFloat kArticleCellHeight = 85.;
 
 #pragma mark - Notification
 /// 文章完成请求
-- (void)articleFinishRequest
+- (void)notificationToUpdateArticleCategories
 {
     NSLog(@"notification call back");
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -95,6 +102,13 @@ static const CGFloat kArticleCellHeight = 85.;
         [self.collectionView reloadData];
         [_refresh endRefreshing];
     });
+}
+
+/// 点击导航栏回滚到顶部
+- (void)notificationToScrollToTop
+{
+    CGPoint topPoint = { -self.tableView.contentInset.left };
+    [self.tableView setContentOffset: topPoint animated: YES];
 }
 
 
@@ -116,7 +130,7 @@ static const CGFloat kArticleCellHeight = 85.;
 /// 懒加载单击手势
 - (UITapGestureRecognizer *)tap
 {
-    return _tap ?: (_tap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(recoverySubviews)]);
+    return _tap ?: (_tap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(animateToRecoverySubviews)]);
 }
 
 - (LXDRefreshView *)refresh
@@ -172,7 +186,7 @@ static const CGFloat kArticleCellHeight = 85.;
 
 #pragma mark - Animate
 /// 还原动画
-- (void)recoverySubviews
+- (void)animateToRecoverySubviews
 {
     [UIView animateWithDuration: 0.15 animations: ^{
         self.tableView.alpha = 0;
@@ -193,7 +207,7 @@ static const CGFloat kArticleCellHeight = 85.;
 }
 
 /// 开始显示分类列表的动画
-- (void)showCategoryArticlesWithAnimation: (UIView *)snapView category: (NSString *)category
+- (void)animateToShowCategoryArticles: (UIView *)snapView category: (NSString *)category
 {
     CGPoint endCenter = CGPointMake(self.collectionView.maxX - snapView.width / 2, self.collectionView.maxY - snapView.height);
     
@@ -237,7 +251,7 @@ static const CGFloat kArticleCellHeight = 85.;
     [UIView animateWithDuration: 0.2 animations: ^{
         collectionView.alpha = 0;
     } completion: ^(BOOL finished) {
-        [self showCategoryArticlesWithAnimation: _categoryView category: self.manager.allCategories[indexPath.item]];
+        [self animateToShowCategoryArticles: _categoryView category: self.manager.allCategories[indexPath.item]];
     }];
 }
 
@@ -296,13 +310,10 @@ static NSMutableString * displayTime;
     LXDArticle * article = [self.filterArticles objectAtIndex: indexPath.row];
     
     /// 创建博客文章展示控制器并传入文章地址
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName: [NSString stringWithFormat: @"Main"] bundle: nil];
-    LXDArticleController * articleController = [storyboard instantiateViewControllerWithIdentifier: [NSString stringWithFormat: @"articleController"]];
-    articleController.article = article;
-    
-    /// 创建透明导航栏并跳转
+    LXDArticleController * articleController = [[LXDArticleController alloc] initWithArticle: article];
     LXDAlphaNavigationController * alphaController = [[LXDAlphaNavigationController alloc] initWithRootViewController: articleController];
     alphaController.transitioningDelegate = self;
+    
     [self.navigationController presentViewController: alphaController animated: YES completion: nil];
 }
 

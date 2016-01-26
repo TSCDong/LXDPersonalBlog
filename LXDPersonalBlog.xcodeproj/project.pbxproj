@@ -82,6 +82,11 @@
 		EFE4906E1C4C92DF00E96491 /* LXDAlphaNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4906B1C4C92DF00E96491 /* LXDAlphaNavigationController.m */; };
 		EFE4906F1C4C92DF00E96491 /* LXDShadowAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4906D1C4C92DF00E96491 /* LXDShadowAlertView.m */; };
 		EFE490721C4C933100E96491 /* LXDRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE490711C4C933100E96491 /* LXDRefreshView.m */; };
+		EFE7B14B1C57198200640A2F /* Default-375w-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B1461C57198200640A2F /* Default-375w-667h@2x.png */; };
+		EFE7B14C1C57198200640A2F /* Default-424w-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B1471C57198200640A2F /* Default-424w-736h@3x.png */; };
+		EFE7B14D1C57198200640A2F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B1481C57198200640A2F /* Default-568h@2x.png */; };
+		EFE7B14E1C57198200640A2F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B1491C57198200640A2F /* Default.png */; };
+		EFE7B14F1C57198200640A2F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B14A1C57198200640A2F /* Default@2x.png */; };
 		EFE82EB71C4F16DE0016F8DD /* LXDGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82EB61C4F16DE0016F8DD /* LXDGroupController.m */; };
 		EFE82EBA1C4F1AA80016F8DD /* UIColor+LXDNumberToColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82EB91C4F1AA80016F8DD /* UIColor+LXDNumberToColor.m */; };
 		EFE82EBD1C4F1D660016F8DD /* LXDGroupLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82EBC1C4F1D660016F8DD /* LXDGroupLayout.m */; };
@@ -213,6 +218,11 @@
 		EFE4906D1C4C92DF00E96491 /* LXDShadowAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDShadowAlertView.m; sourceTree = "<group>"; };
 		EFE490701C4C933100E96491 /* LXDRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDRefreshView.h; sourceTree = "<group>"; };
 		EFE490711C4C933100E96491 /* LXDRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDRefreshView.m; sourceTree = "<group>"; };
+		EFE7B1461C57198200640A2F /* Default-375w-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-375w-667h@2x.png"; sourceTree = "<group>"; };
+		EFE7B1471C57198200640A2F /* Default-424w-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-424w-736h@3x.png"; sourceTree = "<group>"; };
+		EFE7B1481C57198200640A2F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		EFE7B1491C57198200640A2F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		EFE7B14A1C57198200640A2F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		EFE82EB51C4F16DE0016F8DD /* LXDGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupController.h; sourceTree = "<group>"; };
 		EFE82EB61C4F16DE0016F8DD /* LXDGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupController.m; sourceTree = "<group>"; };
 		EFE82EB81C4F1AA80016F8DD /* UIColor+LXDNumberToColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LXDNumberToColor.h"; sourceTree = "<group>"; };
@@ -310,6 +320,7 @@
 		EF0901661C56373000412241 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EFE7B1451C57198200640A2F /* LaunchImage */,
 				EF0901671C56373000412241 /* article */,
 				EF0901711C56373000412241 /* nav */,
 				EF0901781C56373000412241 /* refresh */,
@@ -586,6 +597,18 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		EFE7B1451C57198200640A2F /* LaunchImage */ = {
+			isa = PBXGroup;
+			children = (
+				EFE7B1461C57198200640A2F /* Default-375w-667h@2x.png */,
+				EFE7B1471C57198200640A2F /* Default-424w-736h@3x.png */,
+				EFE7B1481C57198200640A2F /* Default-568h@2x.png */,
+				EFE7B1491C57198200640A2F /* Default.png */,
+				EFE7B14A1C57198200640A2F /* Default@2x.png */,
+			);
+			path = LaunchImage;
+			sourceTree = "<group>";
+		};
 		EFE82EB11C4F16B50016F8DD /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -804,12 +827,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFE7B14F1C57198200640A2F /* Default@2x.png in Resources */,
 				EF0901C11C56373000412241 /* tab_blog@2x.png in Resources */,
 				EFEEDEAC1C43B3B100B2B2B2 /* LaunchScreen.storyboard in Resources */,
 				EF0901AC1C56373000412241 /* nav_icon_back@2x.png in Resources */,
 				EF0901CC1C56373000412241 /* tab_me_icon.png in Resources */,
 				EF0901B61C56373000412241 /* share_collect@3x.png in Resources */,
 				EF0901BF1C56373000412241 /* share_wechat@3x.png in Resources */,
+				EFE7B14C1C57198200640A2F /* Default-424w-736h@3x.png in Resources */,
 				EF0901AB1C56373000412241 /* nav_icon_back.png in Resources */,
 				EF0901B31C56373000412241 /* refresh_success@3x.png in Resources */,
 				EF0901C31C56373000412241 /* tab_blog_hl.png in Resources */,
@@ -834,6 +859,7 @@
 				EF0901AE1C56373000412241 /* ready_refresh_icon.png in Resources */,
 				EF0901AD1C56373000412241 /* nav_icon_back@3x.png in Resources */,
 				EF0901B51C56373000412241 /* share_collect@2x.png in Resources */,
+				EFE7B14E1C57198200640A2F /* Default.png in Resources */,
 				EF0901C91C56373000412241 /* tab_category_hl.png in Resources */,
 				EF0901B21C56373000412241 /* refresh_success@2x.png in Resources */,
 				EFD2D4ED1C44F8BA002E4646 /* Assets.xcassets in Resources */,
@@ -841,6 +867,7 @@
 				EF0901AF1C56373000412241 /* ready_refresh_icon@2x.png in Resources */,
 				EF0901B01C56373000412241 /* ready_refresh_icon@3x.png in Resources */,
 				EF0901BD1C56373000412241 /* share_wechat.png in Resources */,
+				EFE7B14B1C57198200640A2F /* Default-375w-667h@2x.png in Resources */,
 				EF0901BA1C56373000412241 /* share_sina.png in Resources */,
 				EFEEDEA71C43B3B100B2B2B2 /* Main.storyboard in Resources */,
 				EF0901CA1C56373000412241 /* tab_category_hl@2x.png in Resources */,
@@ -852,6 +879,7 @@
 				EF0901A51C56373000412241 /* article_menu.png in Resources */,
 				EF0901A21C56373000412241 /* article_close.png in Resources */,
 				EF0901B71C56373000412241 /* share_friend.png in Resources */,
+				EFE7B14D1C57198200640A2F /* Default-568h@2x.png in Resources */,
 				EF0901CB1C56373000412241 /* tab_category_hl@3x.png in Resources */,
 				EF0901CE1C56373000412241 /* tab_me_icon@3x.png in Resources */,
 				EF0901B91C56373000412241 /* share_friend@3x.png in Resources */,

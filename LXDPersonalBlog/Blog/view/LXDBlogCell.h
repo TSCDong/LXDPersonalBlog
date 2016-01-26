@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /// 文章内容简介字体
-extern NSString const * const LXDContentFontName;
+LXD_EXPORT NSString const * const LXDContentFontName;
 
 @class LXDArticle;
 /**

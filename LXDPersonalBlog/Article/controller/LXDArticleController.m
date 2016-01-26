@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "LXDRoundButton.h"
 #import "LXDAlphaNavigationController.h"
+#import <WebKit/WebKit.h>
 
 /// 博客页面需要遮住的高度
 #define MASK_HEIGHT 44
@@ -35,13 +36,14 @@ typedef NS_ENUM(NSInteger, LXDShareType)
     LXDShareTypeCollect = LXD_SHARE_BASE_TAG + 4,
 };
 
-@interface LXDArticleController ()<UIWebViewDelegate, UIScrollViewDelegate>
+@interface LXDArticleController ()<WKNavigationDelegate, UIScrollViewDelegate>
 
 @property (assign, nonatomic) CGFloat barMaxY;
 @property (assign, atomic) LXDMenuState menuState;
 
 @property (strong, nonatomic) UIView * maskView;
 @property (strong, nonatomic) UILabel * titleLabel;
+@property (strong, nonatomic) WKWebView * webView;
 
 @property (strong, nonatomic) LXDRoundButton * menu;
 @property (strong, nonatomic) LXDRoundButton * collect;
@@ -50,13 +52,44 @@ typedef NS_ENUM(NSInteger, LXDShareType)
 @property (strong, nonatomic) LXDRoundButton * collectShare;
 @property (strong, nonatomic) LXDRoundButton * wechatShare;
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
-
 @end
 
 @implementation LXDArticleController
 
+
+#pragma mark - initializer
+- (instancetype)init
+{
+    return [self initWithArticle: nil];
+}
+
+- (instancetype)initWithArticle: (LXDArticle *)article
+{
+    if (self = [super init]) {
+        self.article = article;
+        [self setupInit];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder: (NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder: aDecoder]) {
+        [self setupInit];
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName: (NSString *)nibNameOrNil bundle: (NSBundle *)nibBundleOrNil
+{
+    if (self = [super initWithNibName: nibNameOrNil bundle: nibBundleOrNil]) {
+        [self setupInit];
+    }
+    return self;
+}
+
+
+#pragma mark - View life
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupInit];
@@ -67,36 +100,31 @@ typedef NS_ENUM(NSInteger, LXDShareType)
 {
     [super viewWillAppear: animated];
     [self setupNavigationBarHeight];
+    [self setupWebView];
 }
 
 - (void)viewDidAppear: (BOOL)animated
 {
     [super viewDidAppear: animated];
-    [_webView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: [NSString stringWithFormat: @"%@%@", LXDBlogAddress, _article.href]]]];
-    _webView.scrollView.delegate = self;
-    [_webView.scrollView addSubview: self.maskView];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(listenStatusHeightDidChange:) name: LXDNavigationBarHeightDidChangeNotification object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(listenUserClickNavigationBar) name: LXDClickNavigationBarNotification object: nil];
 }
 
 - (void)viewWillDisappear: (BOOL)animated
 {
-    MBHUDHIDE
     [super viewWillDisappear: animated];
+    MBHUDHIDE
+    self.webView.scrollView.delegate = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-    _webView.delegate = nil;
-    [_webView loadHTMLString:@"" baseURL:nil];
-    [_webView stopLoading];
-    [_webView removeFromSuperview];
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 
@@ -105,7 +133,9 @@ typedef NS_ENUM(NSInteger, LXDShareType)
 - (void)setupInit
 {
     self.title = _article.title;
+    [self.view addSubview: self.webView];
     self.menuState = LXDMenuStateClose;
+    self.view.backgroundColor = [UIColor darkGrayColor];
 }
 
 /// 配置导航栏相关数据高度（状态栏可能高度会有变化）
@@ -113,54 +143,52 @@ typedef NS_ENUM(NSInteger, LXDShareType)
 {
     LXDAlphaNavigationController * alphaController = (LXDAlphaNavigationController *)self.navigationController;
     CGFloat height = alphaController.navigationBarMaxY;
-    
     _barMaxY = height;
-    _topConstraint.constant = -height;
-    _webView.scrollView.contentInset = UIEdgeInsetsMake(height - MASK_HEIGHT, 0, 0, 0);
+    [alphaController setAlpha: 0];
+}
+
+/// 配置webView
+- (void)setupWebView
+{
+    self.webView.scrollView.delegate = self;
+    [self.webView.scrollView addSubview: self.maskView];
+    self.webView.backgroundColor = [UIColor darkGrayColor];
+    self.webView.scrollView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    
+    NSString * articleHref = [NSString stringWithFormat: @"%@%@", LXDBlogAddress, _article.href];
+    [self.webView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: articleHref]]];
 }
 
 /// 配置导航栏返回按钮
 - (void)setupNavigationBar
 {
     LXDAlphaNavigationController * alphaController = (LXDAlphaNavigationController *)self.navigationController;
-    [alphaController setAlpha: 0];
     [alphaController setBackgroundColor: LXD_MAIN_COLOR];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage: kImageNamed(@"nav_icon_back") style: UIBarButtonItemStylePlain target: self action: @selector(dismissedViewController)];
 }
 
 
-#pragma mark - Web view delegate
-/// webView传入新链接时回调
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+#pragma mark - <WKNavigationDelegate>
+- (void)webView: (WKWebView *)webView didStartProvisionalNavigation: (WKNavigation *)navigation
 {
     MBHUDSHOW
-    webView.userInteractionEnabled = NO;
-    return YES;
 }
 
-/// 完成网页加载时清空部分数据避免内存耗费过大
-- (void)webViewDidFinishLoad: (UIWebView *)webView
+- (void)webView: (WKWebView *)webView didFinishNavigation: (WKNavigation *)navigation
 {
-    webView.userInteractionEnabled = YES;
+    NSLog(@"finished open article href");
     MBHUDHIDE
-    [self.view insertSubview: self.menu aboveSubview: webView];
-    NSLog(@"finish load article href");
-    [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey: @"WebKitCacheModelPreferenceKey"];
-    [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WebKitDiskImageCacheEnabled"];
-    [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WebKitOfflineWebApplicationCacheEnabled"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.view addSubview: self.menu];
 }
 
-/// 网页加载失败
-- (void)webView: (UIWebView *)webView didFailLoadWithError: (NSError *)error
+- (void)webView: (WKWebView *)webView didFailNavigation: (WKNavigation *)navigation withError: (NSError *)error
 {
-    webView.userInteractionEnabled = YES;
     MBHUDHIDE
-    NSLog(@"无法打开博客链接：%@", error);
+    NSLog(@"cannot open the article href. error: %@", error.localizedDescription);
 }
 
 
-#pragma mark - Scroll view delegate
+#pragma mark - <UIScrollViewDelegate>
 /// 用户滚动视图时
 - (void)scrollViewDidScroll: (UIScrollView *)scrollView
 {
@@ -248,9 +276,14 @@ const CGFloat rotateDuration = 0.3;
 {
     LXDAlphaNavigationController * alphaController = (LXDAlphaNavigationController *)self.navigationController;
     CGFloat height = alphaController.navigationBarMaxY;
-    _topConstraint.constant = height;
-    _webView.scrollView.contentInset = UIEdgeInsetsMake(height - MASK_HEIGHT, 0, 0, 0);
     _barMaxY = height;
+}
+
+/// 用户点击导航栏时回调
+- (void)listenUserClickNavigationBar
+{
+    CGPoint topPoint = { -_webView.scrollView.contentInset.left, -_webView.scrollView.contentInset.top };
+    [_webView.scrollView setContentOffset: topPoint animated: YES];
 }
 
 
@@ -271,26 +304,18 @@ const CGFloat rotateDuration = 0.3;
 - (UIView *)maskView
 {
     if (!_maskView) {
-        _maskView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.width, MASK_HEIGHT)];
-        _maskView.backgroundColor = _webView.backgroundColor;
+        _maskView = [[UIView alloc] initWithFrame: CGRectMake(0, -20, self.view.width, _barMaxY)];
+        _maskView.backgroundColor = [UIColor darkGrayColor];
     }
     return _maskView;
-}
-
-/// 控制器标题
-- (UILabel *)titleLabel
-{
-    if (!_titleLabel) {
-        
-    }
-    return _titleLabel;
 }
 
 /// 懒加载菜单按钮
 - (LXDRoundButton *)menu
 {
     if (!_menu) {
-        _menu = [[LXDRoundButton alloc] initWithFrame: CGRectMake(self.view.maxX - 80, self.view.maxY - 80, 40, 40) image: [NSString stringWithFormat: @"article_menu"] target: self action: @selector(openMenuList:)];
+        CGFloat offset = 70 * LXD_SCALE_4_7;
+        _menu = [[LXDRoundButton alloc] initWithFrame: CGRectMake(self.view.maxX - offset, self.view.maxY - offset, 40, 40) image: [NSString stringWithFormat: @"article_menu"] target: self action: @selector(openMenuList:)];
         _menu.layer.shadowColor = [UIColor colorWithWhite: 0.3 alpha: 0.8].CGColor;
         _menu.layer.shadowOffset = CGSizeZero;
         _menu.layer.shadowOpacity = 1;
@@ -336,6 +361,16 @@ const CGFloat rotateDuration = 0.3;
     _wechatShare = [LXDRoundButton roundButtonWithFrame: self.menu.frame image: [NSString stringWithFormat: @"share_wechat"] target: self action: @selector(shareArticle:) tag: LXDShareTypeSina alpha: 0];
     [self.view insertSubview: _wechatShare belowSubview: self.menu];
     return _wechatShare;
+}
+
+/// 懒加载webView
+- (WKWebView *)webView
+{
+    if (!_webView) {
+        _webView = [[WKWebView alloc] initWithFrame: self.view.bounds];
+        _webView.navigationDelegate = self;
+    }
+    return _webView;
 }
 
 

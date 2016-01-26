@@ -43,6 +43,8 @@ static inline NSMutableArray<NSNumber *> * kCellHeights() {
 
 @implementation LXDBlogController
 
+
+#pragma mark - View life
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.articleManager.delegate = self;
@@ -62,12 +64,14 @@ static inline NSMutableArray<NSNumber *> * kCellHeights() {
 {
     [super viewDidAppear: animated];
     self.refreshView.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationToScrollToTop) name: LXDClickNavigationBarNotification object: nil];
 }
 
 - (void)viewWillDisappear: (BOOL)animated
 {
     [super viewWillDisappear: animated];
     MBHUDHIDE
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,6 +81,15 @@ static inline NSMutableArray<NSNumber *> * kCellHeights() {
 - (void)dealloc
 {
     [_refreshView free];
+}
+
+
+#pragma mark - Notification
+/// 接收点击导航栏的通知并让tableView滚动到顶部
+- (void)notificationToScrollToTop
+{
+    CGPoint topPoint = { -self.tableView.contentInset.left, -self.tableView.contentInset.top };
+    [self.tableView setContentOffset: topPoint animated: YES];
 }
 
 
@@ -143,13 +156,10 @@ static NSMutableString * displayTimes;
     LXDArticle * article = [_articleManager.allArticles objectAtIndex: indexPath.row];
     
     /// 创建博客文章展示控制器并传入文章地址
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName: [NSString stringWithFormat: @"Main"] bundle: nil];
-    LXDArticleController * articleController = [storyboard instantiateViewControllerWithIdentifier: [NSString stringWithFormat: @"articleController"]];
-    articleController.article = article;
-    
-    /// 创建透明导航栏并跳转
+    LXDArticleController * articleController = [[LXDArticleController alloc] initWithArticle: article];
     LXDAlphaNavigationController * alphaController = [[LXDAlphaNavigationController alloc] initWithRootViewController: articleController];
     alphaController.transitioningDelegate = self;
+    
     [self.navigationController presentViewController: alphaController animated: YES completion: nil];
 }
 

@@ -28,8 +28,13 @@
 
 /// 使用滚动视图创建下拉刷新控件
 + (instancetype)refreshViewWithScrollView: (UIScrollView *)scrollView;
+
 /// 释放监听
 - (void)free;
+
+/// 开始刷新
+- (void)startRefresh;
+
 /// 停止刷新
 - (void)endRefreshing;
 

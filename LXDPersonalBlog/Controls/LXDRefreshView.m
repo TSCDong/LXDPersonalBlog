@@ -64,19 +64,38 @@ static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOf
     return refreshView;
 }
 
+/// 释放监听
 - (void)free
 {
     [_scrollView removeObserver: self forKeyPath: LXD_OBSERVE_KEY];
 }
 
+/// 结束刷新动画
 - (void)endRefreshing
 {
     if (_state == LXDRefreshStateRefreshing) {
         _state = LXDRefreshStateNormal;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self stopActivity];
-            [self recoverySubviews];
+            [self animateStop];
+            [self animateToRecoverySubviews];
         });
+    }
+}
+
+/// 开始刷新
+- (void)startRefresh
+{
+    _circleLayer.opacity = 0;
+    _refreshImageView.alpha = 0;
+    _state = LXDRefreshStateRefreshing;
+    [self animateStart];
+    
+    UIEdgeInsets insets = _scrollView.contentInset;
+    insets.top = LXD_INIT_HEIGHT + _insetsTop;
+    _scrollView.contentInset = insets;
+    
+    if (_scrollView.contentOffset.y > _scrollView.contentInset.top) {
+        [_scrollView setContentOffset: (CGPoint){ 0, -_scrollView.contentInset.top } animated: YES];
     }
 }
 
@@ -177,7 +196,7 @@ static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOf
 {
     if (_scrollView) {
         [self removeFromSuperview];
-        [_scrollView removeObserver: self forKeyPath: LXD_OBSERVE_KEY];
+        [self free];
     }
     CGRect frame = CGRectMake(0, -(LXD_INIT_HEIGHT - _insetsTop), CGRectGetWidth(scrollView.frame), LXD_INIT_HEIGHT);
     self.frame = frame;
@@ -201,11 +220,7 @@ static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOf
     offset = ABS(offset);
     if (offset < LXD_INIT_HEIGHT) {
         if (_state == LXDRefreshStateReady) {
-            _state = LXDRefreshStateRefreshing;
-            UIEdgeInsets insets = _scrollView.contentInset;
-            insets.top = LXD_INIT_HEIGHT + _insetsTop;
-            _scrollView.contentInset = insets;
-            
+            [self startRefresh];
             if ([_delegate respondsToSelector: @selector(refreshViewStartRefresh:)]) {
                 [_delegate refreshViewStartRefresh: self];
             }
@@ -217,15 +232,15 @@ static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOf
         self.y = -offset;
         CGFloat scale = (offset - LXD_INIT_HEIGHT) / (LXD_REFRESH_HEIGHT - LXD_INIT_HEIGHT);
         
-        _circleLayer.path = [self makeWaterScaleWithScale: scale];
-        [self scaleToShowRefresh: scale offset: offset];
+        _circleLayer.path = [self animateToScaleWater: scale];
+        [self animateToShowRefresh: scale offset: offset];
     }
 }
 
 
 #pragma mark - Animate
 /// 对控件进行形变展示下拉刷新效果
-- (void)scaleToShowRefresh: (CGFloat)scale offset: (CGFloat)offset
+- (void)animateToShowRefresh: (CGFloat)scale offset: (CGFloat)offset
 {
     scale = 1 - MAX(0, MIN(1, scale)) * LXD_MIN_SCALE;
     _refreshImageView.layer.transform = CATransform3DMakeScale(scale, scale, 1);
@@ -235,13 +250,13 @@ static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOf
             _refreshImageView.alpha = 0;
             _circleLayer.opacity = 0;
         } completion: ^(BOOL finished) {
-            [self startActivity];
+            [self animateStart];
         }];
     }
 }
 
 /// 制作水滴形变动画
-- (CGPathRef)makeWaterScaleWithScale: (CGFloat)scale
+- (CGPathRef)animateToScaleWater: (CGFloat)scale
 {
     scale = MAX(0, MIN(1, scale));
     CGFloat bigCircleScale = 1 - scale * LXD_MIN_SCALE;
@@ -292,7 +307,7 @@ static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOf
 }
 
 /// 动画结束复原子控件
-- (void)recoverySubviews
+- (void)animateToRecoverySubviews
 {
     UIEdgeInsets insets = _scrollView.contentInset;
     insets.top = _insetsTop;
@@ -313,7 +328,7 @@ static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOf
 }
 
 /// 开始转圈刷新
-- (void)startActivity
+- (void)animateStart
 {
     if (!_activityView.isAnimating) {
         [_activityView startAnimating];
@@ -321,7 +336,7 @@ static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOf
 }
 
 /// 停止转圈刷新
-- (void)stopActivity
+- (void)animateStop
 {
     if (_activityView.isAnimating) {
         [_activityView stopAnimating];

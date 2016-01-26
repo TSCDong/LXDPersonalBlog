@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 /// 透明导航栏高度发生改变时发出通知
-extern NSString * LXDNavigationBarHeightDidChangeNotification;
+LXD_EXPORT NSString * const LXDNavigationBarHeightDidChangeNotification;
+/// 用户点击导航栏时发出通知，可用于实现点击导航栏滚动回顶部
+LXD_EXPORT NSString * const LXDClickNavigationBarNotification;
 
 /**
  *  透明导航栏
