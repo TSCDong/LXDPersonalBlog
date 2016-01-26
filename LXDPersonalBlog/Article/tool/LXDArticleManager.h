@@ -16,7 +16,7 @@ FOUNDATION_EXPORT NSString * const LXDFinishedRequestNotification;
 
 @optional
 /// 当博客文章更新时回调
-- (void)updateArticle: (LXDArticleManager *)articleManager;
+- (void)articleManagerUpdateArticles: (LXDArticleManager *)articleManager;
 
 @end
 

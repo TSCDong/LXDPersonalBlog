@@ -212,7 +212,7 @@ static CGFloat duration = 0.4;
 
 #pragma mark - LXDArticleManagerDelegate
 /// 文章更新回调
-- (void)updateArticle: (LXDArticleManager *)articleManager
+- (void)articleManagerUpdateArticles: (LXDArticleManager *)articleManager
 {
     NSLog(@"call back and update acticles");
     [_refreshView endRefreshing];

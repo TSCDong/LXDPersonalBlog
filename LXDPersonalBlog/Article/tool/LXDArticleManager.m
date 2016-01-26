@@ -65,8 +65,8 @@ NSString * const LXDFinishedRequestNotification = @"LXDFinishedRequestNotificati
         }
         self.categories = categories;
     }
-    if ([_delegate respondsToSelector: @selector(updateArticle:)]) {
-        [_delegate updateArticle: self];
+    if ([_delegate respondsToSelector: @selector(articleManagerUpdateArticles:)]) {
+        [_delegate articleManagerUpdateArticles: self];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName: LXDFinishedRequestNotification object: self];
 }

@@ -10,7 +10,7 @@
 
 @implementation LXDPushAnimation
 
-- (CGFloat)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
     return 0.35;
 }
