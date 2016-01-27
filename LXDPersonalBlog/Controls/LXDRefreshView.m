@@ -23,18 +23,20 @@
 #define LXD_REFRESH_HEIGHT 120.
 
 
+/// 刷新状态枚举
 typedef NS_ENUM(NSInteger, LXDRefreshState)
 {
-    LXDRefreshStateNormal,
-    LXDRefreshStateReady,
-    LXDRefreshStateRefreshing,
+    LXDRefreshStateNormal,                  ///<    正常状态
+    LXDRefreshStateReady,                   ///<    准备进入刷新状态
+    LXDRefreshStateRefreshing,            ///<     正在刷新
 };
 
-
+/// 角度转弧长
 static FORCE_INLINE CGFloat kAngleToArc(CGFloat angle) {
     return angle * (M_PI / 180.);
 }
 
+/// 偏移CGPoint
 static FORCE_INLINE CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOffset) {
     return CGPointMake(point.x + xOffset, point.y + yOffset);
 }
@@ -42,14 +44,14 @@ static FORCE_INLINE CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFlo
 
 @interface LXDRefreshView ()
 
-@property (nonatomic, assign) CGFloat initWidth;
-@property (nonatomic, assign) CGFloat insetsTop;
-@property (nonatomic, assign) LXDRefreshState state;
+@property (nonatomic, assign) CGFloat initWidth;                               ///<    初始化的粘球宽度
+@property (nonatomic, assign) CGFloat insetsTop;                              ///<    滚动视图的上边insets
+@property (nonatomic, assign) LXDRefreshState state;                       ///<    当前刷新状态
 
-@property (nonatomic, strong) UIButton * success;
-@property (nonatomic, strong) CAShapeLayer * circleLayer;
-@property (nonatomic, strong) UIImageView * refreshImageView;
-@property (nonatomic, strong) UIActivityIndicatorView * activityView;
+@property (nonatomic, strong) UIButton * success;                              ///<    endRefreshing显示成功按钮
+@property (nonatomic, strong) CAShapeLayer * circleLayer;               ///<    粘球绘制图层
+@property (nonatomic, strong) UIImageView * refreshImageView;       ///<     箭头图片
+@property (nonatomic, strong) UIActivityIndicatorView * activityView;  ///<    转圈圈控件
 
 @end
 
