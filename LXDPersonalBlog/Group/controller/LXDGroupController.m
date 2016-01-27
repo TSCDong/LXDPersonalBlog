@@ -10,14 +10,13 @@
 #import "LXDArticle.h"
 #import "LXDGroupCell.h"
 #import "LXDRefreshView.h"
-#import "LXDPopAnimation.h"
-#import "LXDPushAnimation.h"
 #import "LXDArticleManager.h"
 #import "LXDArticleOperator.h"
 #import "LXDGroupArticleCell.h"
 #import "LXDArticleController.h"
 #import "UIColor+LXDNumberToColor.h"
 #import "LXDAlphaNavigationController.h"
+#import "LXDNavigationTransitionAnimation.h"
 
 static NSString * const kCategoryCellIdentifier = @"categoryCell";      ///<    类别单元格复用id
 static NSString * const kArticleCellIdentifier = @"articleCell";            ///<    筛选文章复用id
@@ -342,13 +341,13 @@ static NSMutableString * displayTime;
 /// push转场动画
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController: (UIViewController *)presented presentingController: (UIViewController *)presenting sourceController: (UIViewController *)source
 {
-    return [LXDPushAnimation new];
+    return [[LXDNavigationTransitionAnimation alloc] initWithTransitionType: LXDTransitionTypeJump];
 }
 
 /// pop转场动画
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController: (UIViewController *)dismissed
 {
-    return [LXDPopAnimation new];
+    return [[LXDNavigationTransitionAnimation alloc] initWithTransitionType: LXDTransitionTypeBack];
 }
 
 

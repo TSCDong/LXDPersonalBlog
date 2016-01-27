@@ -10,13 +10,12 @@
 #import "LXDArticle.h"
 #import "LXDBlogCell.h"
 #import "LXDRefreshView.h"
-#import "LXDPopAnimation.h"
-#import "LXDPushAnimation.h"
 #import "LXDArticleManager.h"
 #import "NSArray+LXDFilter.h"
 #import "LXDArticleOperator.h"
 #import "LXDArticleController.h"
 #import "LXDAlphaNavigationController.h"
+#import "LXDNavigationTransitionAnimation.h"
 #import <objc/runtime.h>
 
 
@@ -284,13 +283,13 @@ static CGFloat duration = 0.4;
 /// 返回present的转场动画对象
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController: (UIViewController *)presented presentingController: (UIViewController *)presenting sourceController: (UIViewController *)source
 {
-    return [LXDPushAnimation new];
+    return [[LXDNavigationTransitionAnimation alloc] initWithTransitionType: LXDTransitionTypeJump];
 }
 
 /// 返回dismiss的转场动画对象
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController: (UIViewController *)dismissed
 {
-    return [LXDPopAnimation new];
+    return [[LXDNavigationTransitionAnimation alloc] initWithTransitionType: LXDTransitionTypeBack];
 }
 
 

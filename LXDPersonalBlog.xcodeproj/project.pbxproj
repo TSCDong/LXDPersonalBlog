@@ -71,8 +71,9 @@
 		EF3AF66B1C4A79040043B488 /* NSString+LXDVaild.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF66A1C4A79040043B488 /* NSString+LXDVaild.m */; };
 		EF3AF66E1C4A7A8A0043B488 /* NSArray+LXDFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF66D1C4A7A8A0043B488 /* NSArray+LXDFilter.m */; };
 		EF3AF6971C4B78220043B488 /* UIFont+LXDAdjustFont.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF6961C4B78220043B488 /* UIFont+LXDAdjustFont.m */; };
-		EF3AF6A01C4BC33C0043B488 /* LXDPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF69D1C4BC33C0043B488 /* LXDPopAnimation.m */; };
-		EF3AF6A11C4BC33C0043B488 /* LXDPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF69F1C4BC33C0043B488 /* LXDPushAnimation.m */; };
+		EF3AF6A01C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF69D1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m */; };
+		EF7749411C586D22008A12ED /* LXDScaleTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7749401C586D22008A12ED /* LXDScaleTransitionAnimation.m */; };
+		EF7749451C586E0E008A12ED /* LXDBaseTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7749441C586E0E008A12ED /* LXDBaseTransitionAnimation.m */; };
 		EFA17FB11C448FC600D93181 /* LXDMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA17FB01C448FC600D93181 /* LXDMainController.m */; };
 		EFA17FC81C44D69200D93181 /* UIView+LXDEasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA17FC71C44D69200D93181 /* UIView+LXDEasyFrame.m */; };
 		EFD2D4EB1C44F6C7002E4646 /* LXDBlogController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2D4EA1C44F6C7002E4646 /* LXDBlogController.m */; };
@@ -196,10 +197,12 @@
 		EF3AF66D1C4A7A8A0043B488 /* NSArray+LXDFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LXDFilter.m"; sourceTree = "<group>"; };
 		EF3AF6951C4B78220043B488 /* UIFont+LXDAdjustFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+LXDAdjustFont.h"; sourceTree = "<group>"; };
 		EF3AF6961C4B78220043B488 /* UIFont+LXDAdjustFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LXDAdjustFont.m"; sourceTree = "<group>"; };
-		EF3AF69C1C4BC33C0043B488 /* LXDPopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDPopAnimation.h; sourceTree = "<group>"; };
-		EF3AF69D1C4BC33C0043B488 /* LXDPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDPopAnimation.m; sourceTree = "<group>"; };
-		EF3AF69E1C4BC33C0043B488 /* LXDPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDPushAnimation.h; sourceTree = "<group>"; };
-		EF3AF69F1C4BC33C0043B488 /* LXDPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDPushAnimation.m; sourceTree = "<group>"; };
+		EF3AF69C1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDNavigationTransitionAnimation.h; sourceTree = "<group>"; };
+		EF3AF69D1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDNavigationTransitionAnimation.m; sourceTree = "<group>"; };
+		EF77493F1C586D22008A12ED /* LXDScaleTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDScaleTransitionAnimation.h; sourceTree = "<group>"; };
+		EF7749401C586D22008A12ED /* LXDScaleTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDScaleTransitionAnimation.m; sourceTree = "<group>"; };
+		EF7749431C586E0E008A12ED /* LXDBaseTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBaseTransitionAnimation.h; sourceTree = "<group>"; };
+		EF7749441C586E0E008A12ED /* LXDBaseTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBaseTransitionAnimation.m; sourceTree = "<group>"; };
 		EFA17FAF1C448FC600D93181 /* LXDMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDMainController.h; sourceTree = "<group>"; };
 		EFA17FB01C448FC600D93181 /* LXDMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDMainController.m; sourceTree = "<group>"; };
 		EFA17FB21C4497D300D93181 /* LXDPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXDPrefixHeader.pch; sourceTree = "<group>"; };
@@ -489,10 +492,12 @@
 		EF3AF69B1C4BC3310043B488 /* TransitionAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				EF3AF69C1C4BC33C0043B488 /* LXDPopAnimation.h */,
-				EF3AF69D1C4BC33C0043B488 /* LXDPopAnimation.m */,
-				EF3AF69E1C4BC33C0043B488 /* LXDPushAnimation.h */,
-				EF3AF69F1C4BC33C0043B488 /* LXDPushAnimation.m */,
+				EF7749431C586E0E008A12ED /* LXDBaseTransitionAnimation.h */,
+				EF7749441C586E0E008A12ED /* LXDBaseTransitionAnimation.m */,
+				EF77493F1C586D22008A12ED /* LXDScaleTransitionAnimation.h */,
+				EF7749401C586D22008A12ED /* LXDScaleTransitionAnimation.m */,
+				EF3AF69C1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.h */,
+				EF3AF69D1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m */,
 			);
 			path = TransitionAnimation;
 			sourceTree = "<group>";
@@ -915,12 +920,13 @@
 				EFEEDEA11C43B3B100B2B2B2 /* LXDAppDelegate.m in Sources */,
 				EF01EA011C53955A004E98BE /* LXDRoundButton.m in Sources */,
 				EF01E9FE1C539535004E98BE /* LXDArticleStorage.m in Sources */,
+				EF7749451C586E0E008A12ED /* LXDBaseTransitionAnimation.m in Sources */,
 				EF3AF65A1C4A44F00043B488 /* MBProgressHUD.m in Sources */,
 				EF3AF66E1C4A7A8A0043B488 /* NSArray+LXDFilter.m in Sources */,
 				EFE82EBD1C4F1D660016F8DD /* LXDGroupLayout.m in Sources */,
 				EF3AF6681C4A78DB0043B488 /* LXDBlogRequester.m in Sources */,
 				EFE490721C4C933100E96491 /* LXDRefreshView.m in Sources */,
-				EF3AF6A01C4BC33C0043B488 /* LXDPopAnimation.m in Sources */,
+				EF3AF6A01C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m in Sources */,
 				EF3AF6971C4B78220043B488 /* UIFont+LXDAdjustFont.m in Sources */,
 				EFE82EC91C4F4D2B0016F8DD /* LXDSnapView.m in Sources */,
 				EF01E9FA1C539535004E98BE /* LXDArticle.m in Sources */,
@@ -929,6 +935,7 @@
 				EFE82ECC1C4F5BBC0016F8DD /* LXDGroupArticleCell.m in Sources */,
 				EF0901D81C56680900412241 /* LXDFamousController.m in Sources */,
 				EFA17FC81C44D69200D93181 /* UIView+LXDEasyFrame.m in Sources */,
+				EF7749411C586D22008A12ED /* LXDScaleTransitionAnimation.m in Sources */,
 				EFE82EB71C4F16DE0016F8DD /* LXDGroupController.m in Sources */,
 				EFD2D4F01C44F9C0002E4646 /* LXDBlogCell.m in Sources */,
 				EF01E9FB1C539535004E98BE /* LXDArticleCompiler.m in Sources */,
@@ -939,7 +946,6 @@
 				EFEEDE9E1C43B3B100B2B2B2 /* main.m in Sources */,
 				EF01E9FC1C539535004E98BE /* LXDArticleManager.m in Sources */,
 				EFE82EBA1C4F1AA80016F8DD /* UIColor+LXDNumberToColor.m in Sources */,
-				EF3AF6A11C4BC33C0043B488 /* LXDPushAnimation.m in Sources */,
 				EFD2D4EB1C44F6C7002E4646 /* LXDBlogController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
