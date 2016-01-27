@@ -25,6 +25,8 @@ LXD_EXPORT NSString const * const LXDContentFontName;
 
 /// 文章简介字体
 + (UIFont *)contentFont;
+/// 计算高度
++ (CGFloat)heightWithContent: (NSString *)content;
 
 
 @end

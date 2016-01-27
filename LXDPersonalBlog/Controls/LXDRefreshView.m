@@ -31,11 +31,11 @@ typedef NS_ENUM(NSInteger, LXDRefreshState)
 };
 
 
-static inline CGFloat kAngleToArc(CGFloat angle) {
+static FORCE_INLINE CGFloat kAngleToArc(CGFloat angle) {
     return angle * (M_PI / 180.);
 }
 
-static inline CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOffset) {
+static FORCE_INLINE CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFloat yOffset) {
     return CGPointMake(point.x + xOffset, point.y + yOffset);
 }
 

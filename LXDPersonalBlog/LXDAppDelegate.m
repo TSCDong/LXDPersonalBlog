@@ -15,7 +15,7 @@
 @implementation LXDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NSThread sleepForTimeInterval: 0.5];
+    [NSThread sleepForTimeInterval: 0.2];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     return YES;
 }

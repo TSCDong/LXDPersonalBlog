@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class LXDArticleManager;
 /**
  *  博客列表控制器
  */
 @interface LXDBlogController : UITableViewController
+
+@property (nonatomic, readonly) LXDArticleManager * articleManager;
 
 @end

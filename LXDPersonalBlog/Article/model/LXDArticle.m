@@ -16,7 +16,7 @@ typedef void(^LXDEnumeratePropertiesHandler)(objc_property_t property, const cha
 
 
 /// 用runtime遍历对象属性
-static inline void lxd_enumerateProperties(id object, LXDEnumeratePropertiesHandler enumerateHandler) {
+static FORCE_INLINE void lxd_enumerateProperties(id object, LXDEnumeratePropertiesHandler enumerateHandler) {
     unsigned int propertyCount;
     objc_property_t * properties = class_copyPropertyList([object class], &propertyCount);
     for (int index = 0; index < propertyCount; index++) {
@@ -27,7 +27,7 @@ static inline void lxd_enumerateProperties(id object, LXDEnumeratePropertiesHand
 }
 
 /// 使用runtime直接调用getter实现
-static inline id lxd_returnValueForProperty(id object, const char * propertyName) {
+static FORCE_INLINE id lxd_returnValueForProperty(id object, const char * propertyName) {
     SEL getterSel = NSSelectorFromString([NSString stringWithUTF8String: propertyName]);
     Method getter = class_getInstanceMethod([object class], getterSel);
     LXDIMP imp = (LXDIMP)method_getImplementation(getter);
@@ -35,7 +35,7 @@ static inline id lxd_returnValueForProperty(id object, const char * propertyName
 }
 
 /// 使用runtime直接调用setter实现
-static inline void lxd_setValueForProperty(id object, const char * propertyName, id value) {
+static FORCE_INLINE void lxd_setValueForProperty(id object, const char * propertyName, id value) {
     NSMutableString * name = [NSMutableString stringWithUTF8String: propertyName];
     [name replaceCharactersInRange: NSMakeRange(0, 1) withString: [NSString stringWithFormat: @"%c", toupper([name characterAtIndex: 0])]];
     SEL setterSel = NSSelectorFromString([NSString stringWithFormat: @"set%@:", name]);

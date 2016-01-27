@@ -19,24 +19,17 @@
 #import "LXDAlphaNavigationController.h"
 #import <objc/runtime.h>
 
-static NSString * const reuseIdentifier = @"articleCell";
-static const CGFloat baseHeight = 170;
 
-/// 存储单元格高度的数组
-static inline NSMutableArray<NSNumber *> * kCellHeights() {
-    static NSMutableArray<NSNumber *> * cellHeights;
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
-        cellHeights = @[].mutableCopy;
-    });
-    return cellHeights;
-}
 
+#pragma mark - LXDBlogController实现
+/// ==========================================================
+/// blogController实现以及分类
+/// ==========================================================
 @interface LXDBlogController ()<UIViewControllerTransitioningDelegate, LXDArticleManagerDelegate, LXDRefreshViewDelegate>
 
 @property (nonatomic, strong) NSArray * articleList;                                ///<    文章列表
 @property (nonatomic, strong) LXDRefreshView * refreshView;               ///<     刷新视图
-@property (nonatomic, strong) LXDArticleManager * articleManager;    ///<      文章管理对象
+@property (strong) LXDArticleManager * articleManager;                       ///<      文章管理对象
 
 @end
 
@@ -44,7 +37,7 @@ static inline NSMutableArray<NSNumber *> * kCellHeights() {
 @implementation LXDBlogController
 
 
-#pragma mark - View life
+#pragma mark View life
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.articleManager.delegate = self;
@@ -84,7 +77,7 @@ static inline NSMutableArray<NSNumber *> * kCellHeights() {
 }
 
 
-#pragma mark - Notification
+#pragma mark Notification
 /// 接收点击导航栏的通知并让tableView滚动到顶部
 - (void)notificationToScrollToTop
 {
@@ -93,26 +86,92 @@ static inline NSMutableArray<NSNumber *> * kCellHeights() {
 }
 
 
-#pragma mark - <UITableViewDataSource>
+#pragma mark Getter
+/// 懒加载刷新视图
+- (LXDRefreshView *)refreshView
+{
+    return _refreshView ?: ( _refreshView = [LXDRefreshView refreshViewWithScrollView: self.tableView] );
+}
+
+/// 懒加载文章管理对象
+- (LXDArticleManager *)articleManager
+{
+    return _articleManager ?: ( _articleManager = [LXDArticleManager sharedManager] );
+}
+
+
+#pragma mark LXDArticleManagerDelegate
+/// 文章更新回调
+- (void)articleManagerUpdateArticles: (LXDArticleManager *)articleManager
+{
+    NSLog(@"call back and update acticles");
+    [_refreshView endRefreshing];
+    if (_articleManager.isUpdate) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBHUDHIDE
+            [self.tableView reloadData];
+        });
+    }
+}
+
+
+#pragma mark LXDRefreshViewDelegate
+/// 刷新视图触发刷新回调
+- (void)refreshViewStartRefresh:(LXDRefreshView *)refreshView
+{
+    [LXDArticleOperator requestBlogArticles];
+}
+
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - TableView相关协议类别扩展
+/// ==========================================================
+/// blogController类别实现TableView相关协议
+/// ==========================================================
+
+/// 复用单元格id
+static NSString * const reuseIdentifier = @"articleCell";
+
+/// 存储单元格高度的数组
+static FORCE_INLINE NSMutableArray<NSNumber *> * kCellHeights() {
+    static NSMutableArray<NSNumber *> * cellHeights;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        cellHeights = @[].mutableCopy;
+    });
+    return cellHeights;
+}
+
+@implementation LXDBlogController (LXDTableViewProtocol)
+
+#pragma mark <UITableViewDataSource>
 static NSMutableString * displayTimes;
 - (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section {
-    displayTimes = @"".mutableCopy;
-    for (int idx = 0; idx < _articleManager.allArticles.count; idx++) {
-        [displayTimes appendFormat: @"0"];
-    }
-    return _articleManager.allArticles.count;
+    [self resetDisplayTimes: displayTimes];
+    return self.articleManager.allArticles.count;
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
     LXDBlogCell *cell = [tableView dequeueReusableCellWithIdentifier: reuseIdentifier];
-    LXDArticle * article = [_articleManager.allArticles objectAtIndex: indexPath.row];
+    LXDArticle * article = [self.articleManager.allArticles objectAtIndex: indexPath.row];
     [cell showArticle: article];
     
     return cell;
 }
 
 
-#pragma mark - <UITableViewDelegate>
+#pragma mark <UITableViewDelegate>
 /// 单元格动画效果
 - (void)tableView: (UITableView *)tableView willDisplayCell: (UITableViewCell *)cell forRowAtIndexPath: (NSIndexPath *)indexPath
 {
@@ -138,14 +197,11 @@ static NSMutableString * displayTimes;
     NSMutableArray<NSNumber *> * cellHeights = kCellHeights();
     if (indexPath.row < cellHeights.count) { return cellHeights[indexPath.row].doubleValue; }
     
-    /// 计算高度
-    LXDArticle * article = _articleManager.allArticles[indexPath.row];
-    CGFloat contentHeight = [article.content boundingRectWithSize: CGSizeMake(LXD_SCREEN_WIDTH - 50, CGFLOAT_MAX) options: NSStringDrawingUsesLineFragmentOrigin attributes: @{ NSFontAttributeName: [LXDBlogCell contentFont] } context: nil].size.height + baseHeight + 1;
+    /// 计算高度并存储
+    LXDArticle * article = self.articleManager.allArticles[indexPath.row];
+    CGFloat contentHeight = [LXDBlogCell heightWithContent: article.content];
+    contentHeight = [self scaleContentHeight: contentHeight];
     
-    /// 按比例缩放高度并存储
-    CGFloat scale = [self contentScale];
-    contentHeight *= scale;
-    contentHeight = ceil(contentHeight);
     [cellHeights addObject: @(contentHeight)];
     return contentHeight;
 }
@@ -153,18 +209,17 @@ static NSMutableString * displayTimes;
 /// 点击文章列表跳转文章详细内容
 - (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    LXDArticle * article = [_articleManager.allArticles objectAtIndex: indexPath.row];
+    LXDArticle * article = [self.articleManager.allArticles objectAtIndex: indexPath.row];
     
     /// 创建博客文章展示控制器并传入文章地址
     LXDArticleController * articleController = [[LXDArticleController alloc] initWithArticle: article];
     LXDAlphaNavigationController * alphaController = [[LXDAlphaNavigationController alloc] initWithRootViewController: articleController];
     alphaController.transitioningDelegate = self;
-    
     [self.navigationController presentViewController: alphaController animated: YES completion: nil];
 }
 
 
-#pragma mark - Tool
+#pragma mark Tool
 static CGFloat duration = 0.4;
 /// 获取cell出现时的动画时长
 - (NSTimeInterval)timeIntervalForDisplayCell: (UITableViewCell *)cell atIndexPath: (NSIndexPath *)indexPath
@@ -190,42 +245,42 @@ static CGFloat duration = 0.4;
     if (LXD_SCALE_4_7 < 1) {
         return 0.95;
     } else if (LXD_SCALE_4_7 > 1) {
-        return 1.05;
-    }
+        return 1.05; }
     return 1;
 }
 
-
-#pragma mark - Getter
-/// 懒加载刷新视图
-- (LXDRefreshView *)refreshView
+/// 重置动画实现记录
+- (void)resetDisplayTimes: (NSMutableString *)records
 {
-    return _refreshView ?: ( _refreshView = [LXDRefreshView refreshViewWithScrollView: self.tableView] );
-}
-
-/// 懒加载文章管理对象
-- (LXDArticleManager *)articleManager
-{
-    return _articleManager ?: ( _articleManager = [LXDArticleManager sharedManager] );
-}
-
-
-#pragma mark - LXDArticleManagerDelegate
-/// 文章更新回调
-- (void)articleManagerUpdateArticles: (LXDArticleManager *)articleManager
-{
-    NSLog(@"call back and update acticles");
-    [_refreshView endRefreshing];
-    if (_articleManager.isUpdate) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MBHUDHIDE
-            [self.tableView reloadData];
-        });
+    records = @"".mutableCopy;
+    for (int idx = 0; idx < self.articleManager.allArticles.count; idx++) {
+        [records appendFormat: @"0"];
     }
 }
 
+/// 根据屏幕尺寸调整单元格高度计算并且向上取整
+- (CGFloat)scaleContentHeight: (CGFloat)contentHeight
+{
+    return ceil(contentHeight * self.contentScale);
+}
 
-#pragma mark - UIViewControllerTransitioningDelegate
+
+@end
+
+
+
+
+
+
+
+#pragma mark - 转场动画实现类别扩展
+/// ==========================================================
+/// blogController转场动画实现
+/// ==========================================================
+@implementation LXDBlogController (LXDTransitioningProtocol)
+
+
+#pragma mark <UIViewControllerTransitioningDelegate>
 /// 返回present的转场动画对象
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController: (UIViewController *)presented presentingController: (UIViewController *)presenting sourceController: (UIViewController *)source
 {
@@ -239,12 +294,6 @@ static CGFloat duration = 0.4;
 }
 
 
-#pragma mark - LXDRefreshViewDelegate
-/// 刷新视图触发刷新回调
-- (void)refreshViewStartRefresh:(LXDRefreshView *)refreshView
-{
-    [LXDArticleOperator requestBlogArticles];
-}
-
-
 @end
+
+

@@ -18,7 +18,8 @@
 #pragma mark - View life
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupItemsImageRenderModel];
+    [self setupItemImages];
+    self.tabBar.tintColor = LXD_MAIN_COLOR;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,19 +28,24 @@
 
 
 #pragma mark - Setup
-/// 设置tabBarItem的图片渲染模式
-- (void)setupItemsImageRenderModel
+/// 设置tabBarItem的图片
+- (void)setupItemImages
 {
     NSArray<NSString *> * images = @[
                                      [NSString stringWithFormat: @"tab_blog"],
                                      [NSString stringWithFormat: @"tab_category"],
                                      [NSString stringWithFormat: @"tab_me_icon"],
                                      ];
+    [self setupItemWithImages: images selectedImageSuffix: [NSString stringWithFormat: @"_hl"] renderingMode: UIImageRenderingModeAlwaysOriginal];
+}
+
+/// 设置item的图片和渲染模式
+- (void)setupItemWithImages: (NSArray *)images selectedImageSuffix: (NSString *)selectedImageSuffix renderingMode: (UIImageRenderingMode)renderingMode
+{
     [self.tabBar.items enumerateObjectsUsingBlock: ^(UITabBarItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
         item.image = [UIImage imageNamed: images[idx]];
-        item.selectedImage = [[UIImage imageNamed: [images[idx] stringByAppendingFormat: @"_hl"]] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        item.selectedImage = [[UIImage imageNamed: [images[idx] stringByAppendingString: selectedImageSuffix]] imageWithRenderingMode: renderingMode];
     }];
-    self.tabBar.tintColor = LXD_MAIN_COLOR;
 }
 
 

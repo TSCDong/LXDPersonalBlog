@@ -13,8 +13,13 @@
 #import "MBProgressHUD.h"
 #import "UIView+LXDEasyFrame.h"
 
+
+#pragma mark - 宏定义
+
 #define LXD_EXPORT FOUNDATION_EXTERN
 
+/// 强制内联
+#define FORCE_INLINE __inline__ __attribute__((always_inline))
 /// app主色
 #define LXD_MAIN_COLOR [UIColor colorWithRed: 37/255. green: 148/255. blue: 211/255. alpha: 1]
 /// 屏幕宽度
@@ -24,9 +29,6 @@
 /// 错误调试输出
 #define LXD_ERROR_LOG(error) \
     NSLog(@"error happen <method: %s line: %d> error: %@", __FUNCTION__, __LINE__, error);
-/// 判断系统版本是否8.0以上
-#define LXD_IOS_8   \
-    ([UIDevice currentDevice].systemVersion.doubleValue >= 8.0)
 /// 空字符串
 #define LXD_EMPTY_STRING @""
 
@@ -46,46 +48,63 @@
     }
 
 /// CA动画关键key
-#define LXD_SCALE_KEY @"transform.scale"
 #define LXD_ROTATE_KEY @"transform.rotation"
 
 
 
+#pragma mark - 优化图片加载方式
 /// 获取图片格式名
 static inline NSString * kPNG() { return [NSString stringWithFormat: @".png"]; }
 static inline NSString * KJPEG() { return [NSString stringWithFormat: @".jpeg"]; }
 static inline NSString * kJPG() { return [NSString stringWithFormat: @".jpg"]; }
-/// 获取图片比例后缀
-static inline NSString * kImageScale() {
+
+/// 获取图片比例命名后缀
+static inline NSString * kImageScaleSuffix() {
     NSInteger scale = floor([UIScreen mainScreen].scale);
     if (scale == 2) { return [NSString stringWithFormat: @"@2x"]; }
     else if (scale == 3) { return [NSString stringWithFormat: @"@3x"]; }
     else { return LXD_EMPTY_STRING; }
 }
+
+/// 获取图片格式，默认为png格式
+static FORCE_INLINE NSString * kCertainImageFormat(NSMutableString * imageName) {
+    NSString * imageFormat;
+    if ([imageName hasSuffix: kPNG()]) { imageFormat = kPNG(); }
+    else if ([imageName hasSuffix: KJPEG()]) { imageFormat = KJPEG(); }
+    else if ([imageName hasSuffix: kJPG()]) { imageFormat = kJPG(); }
+    if (imageFormat) {
+        [imageName deleteCharactersInRange: NSMakeRange(imageName.length - imageFormat.length, imageFormat.length)]; }
+    imageFormat = imageFormat ?: kPNG();
+    return imageFormat;
+}
+
+/// 清空图片后缀名倍数，如果存在后缀
+static FORCE_INLINE void kCleanScaleSuffix(NSMutableString * imageName) {
+    if ([imageName hasSuffix: [NSString stringWithFormat: @"@2x"]] || [imageName hasSuffix: [NSString stringWithFormat: @"@3x"]]) {
+        [imageName deleteCharactersInRange: NSMakeRange(imageName.length - 3, 3)];
+    }
+}
+
+/// 获取图片正确命名
+static FORCE_INLINE NSString * kAbsoluteImageName(NSMutableString * imageName) {
+    NSString * imageFormat = kCertainImageFormat(imageName);
+    kCleanScaleSuffix(imageName);
+    [imageName appendString: kImageScaleSuffix()];
+    [imageName appendString: imageFormat];
+    return imageName;
+}
+
 /// 加载图片（无缓存）
-static inline UIImage * kImageNamed(NSString * imageName) {
-    NSMutableString * name = imageName.mutableCopy;
-    NSString * imageType;
-    if ([name hasSuffix: kPNG()]) { imageType = kPNG(); }
-    else if ([name hasSuffix: KJPEG()]) { imageType = KJPEG(); }
-    else if ([name hasSuffix: kJPG()]) { imageType = kJPG(); }
-    if (imageType) {
-        [name deleteCharactersInRange: NSMakeRange(name.length - imageType.length, imageType.length)];
-    }
-    imageType = imageType ?: kPNG();
-    
-    if ([name hasSuffix: [NSString stringWithFormat: @"@2x"]] || [name hasSuffix: [NSString stringWithFormat: @"@3x"]]) {
-        [name deleteCharactersInRange: NSMakeRange(name.length - 3, 3)];
-    }
-    
-    [name appendString: kImageScale()];
-    [name appendString: imageType];
-    return [UIImage imageWithContentsOfFile: [NSString stringWithFormat: @"%@/%@", [NSBundle mainBundle].bundlePath, name]];
+static FORCE_INLINE UIImage * kImageNamed(NSString * imageName) {
+    NSString * absoluteImageName = kAbsoluteImageName(imageName.mutableCopy);
+    return [UIImage imageNamed: absoluteImageName];
 }
 
 
+
+#pragma mark - 通用数据
 /// 使用rgb值创建颜色
-static inline UIColor * kRGB(CGFloat red, CGFloat green, CGFloat blue) {
+static FORCE_INLINE UIColor * kRGB(CGFloat red, CGFloat green, CGFloat blue) {
     return [UIColor colorWithRed: red/255. green: green/255. blue: blue/255. alpha: 1];
 }
 

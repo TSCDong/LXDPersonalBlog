@@ -14,7 +14,7 @@
 NSString const * const LXDContentFontName = @"Menlo-Regular";
 
 /// 获取用户头像
-static inline UIImage * kAuthorImage() {
+static FORCE_INLINE UIImage * kAuthorImage() {
     static UIImage * authorImage;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
@@ -98,6 +98,13 @@ static inline UIImage * kAuthorImage() {
 + (UIFont *)contentFont
 {
     return [UIFont adjustFontWithName: LXDContentFontName.copy size: 16.5];
+}
+
+/// 动态计算高度
++ (CGFloat)heightWithContent: (NSString *)content
+{
+    static const CGFloat baseHeight = 170;
+    return [content boundingRectWithSize: CGSizeMake(LXD_SCREEN_WIDTH - 50, CGFLOAT_MAX) options: NSStringDrawingUsesLineFragmentOrigin attributes: @{ NSFontAttributeName: LXDBlogCell.contentFont } context: nil].size.height + baseHeight + 1;
 }
 
 
