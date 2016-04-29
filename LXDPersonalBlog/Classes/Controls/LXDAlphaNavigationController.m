@@ -45,14 +45,13 @@ NSString * const LXDClickNavigationBarNotification = @"LXDClickNavigationBarNoti
     UIImage * alphaImage = kImageNamed(@"nav_alpha_image");
     [self.navigationBar setBackgroundImage: alphaImage forBarMetrics: UIBarMetricsCompact];
     self.navigationBar.layer.masksToBounds = YES;
-    [self.navigationBar addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(clickNavigationBar)]];
+//    [self.navigationBar addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(clickNavigationBar)]];
     
     [self.view insertSubview: self.backgroundView belowSubview: self.navigationBar];
     [self.navigationBar setTitleTextAttributes: @{
                                                   NSForegroundColorAttributeName: [UIColor whiteColor]
                                                   }];
     self.extendedLayoutIncludesOpaqueBars = NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationBar.tintColor = [UIColor whiteColor];
     self.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
 }
@@ -79,6 +78,17 @@ NSString * const LXDClickNavigationBarNotification = @"LXDClickNavigationBarNoti
     _backgroundView.backgroundColor = backgroundColor;
 }
 
+/// 自定义导航栏视图
+- (void)customBackgroundView: (UIView *)backgroundView
+{
+    NSParameterAssert(backgroundView);
+    
+    [_backgroundView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    _backgroundView.backgroundColor = [UIColor whiteColor];
+    backgroundView.frame = _backgroundView.bounds;
+    [_backgroundView addSubview: backgroundView];
+}
+
 
 #pragma mark - Setter
 /// 设置导航栏透明度
@@ -97,8 +107,12 @@ NSString * const LXDClickNavigationBarNotification = @"LXDClickNavigationBarNoti
         CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
         navBarFrame.size.height += statusHeight;
         
+        if (statusHeight == 0) {
+            navBarFrame.size.height += 20;
+            self.navigationBar.frame = navBarFrame;
+        }
         _backgroundView = [[UIView alloc] initWithFrame: navBarFrame];
-        _backgroundView.backgroundColor = LXD_MAIN_COLOR;
+//        _backgroundView.backgroundColor = LXD_MAIN_COLOR;
     }
     return _backgroundView;
 }

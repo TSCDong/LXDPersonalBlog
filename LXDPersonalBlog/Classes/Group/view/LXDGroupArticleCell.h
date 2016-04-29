@@ -17,4 +17,9 @@
 
 - (void)showArticle: (LXDArticle *)article;
 
+/*!
+ *  @brief 在cell将要显示的时候调用显示动画
+ */
+- (void)cellWillDisplay;
+
 @end

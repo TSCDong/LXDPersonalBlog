@@ -34,5 +34,13 @@
     self.writeTime.text = article.dateTime;
 }
 
+- (void)cellWillDisplay
+{
+    _articleTitle.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    [UIView animateWithDuration: 0.8 delay: 0 usingSpringWithDamping: 0.25 initialSpringVelocity: 0 options: UIViewAnimationOptionCurveEaseInOut animations: ^{
+        _articleTitle.transform = CGAffineTransformIdentity;
+    } completion: nil];
+}
+
 
 @end

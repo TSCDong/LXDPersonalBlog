@@ -8,12 +8,14 @@
 
 #import "LXDBlogController.h"
 #import "LXDArticle.h"
+#import "LXDQueue.h"
 #import "LXDBlogCell.h"
 #import "LXDRefreshView.h"
 #import "LXDArticleManager.h"
 #import "NSArray+LXDFilter.h"
 #import "LXDArticleOperator.h"
 #import "LXDArticleController.h"
+#import "LXDLineBackgroundView.h"
 #import "LXDAlphaNavigationController.h"
 #import "LXDNavigationTransitionAnimation.h"
 #import <objc/runtime.h>
@@ -28,7 +30,7 @@
 
 @property (nonatomic, strong) NSArray * articleList;                                ///<    文章列表
 @property (nonatomic, strong) LXDRefreshView * refreshView;               ///<     刷新视图
-@property (strong) LXDArticleManager * articleManager;                       ///<      文章管理对象
+@property (nonatomic, strong) LXDArticleManager * articleManager;     ///<      文章管理对象
 
 @end
 
@@ -46,7 +48,17 @@
 - (void)viewWillAppear: (BOOL)animated
 {
     [super viewWillAppear: animated];
-    self.title = [NSString stringWithFormat: @"博客"];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    [LXDQueue executeInMainQueue: ^{
+        if ([self.navigationController isKindOfClass: NSClassFromString(@"LXDAlphaNavigationController")]) {
+            LXDLineBackgroundView * lineView = [LXDLineBackgroundView createViewWithFrame: CGRectMake(0, 0, LXD_SCREEN_WIDTH, 64) lineWidth: 4 lineGap: 4 lineColor: [[UIColor blackColor] colorWithAlphaComponent:0.015]];
+            [lineView setAttributeText: [[NSAttributedString alloc] initWithString: @"博客" attributes: @{ NSFontAttributeName: [UIFont systemFontOfSize: 22], NSForegroundColorAttributeName: [UIColor colorWithWhite: 0.3 alpha: 1] }]];
+            LXDAlphaNavigationController * alphaNav = (LXDAlphaNavigationController *)self.navigationController;
+            [alphaNav customBackgroundView: lineView];
+        }
+    }];
     if (_articleManager.allArticles.count == 0) {
         MBHUDSHOW
     }
@@ -56,7 +68,6 @@
 {
     [super viewDidAppear: animated];
     self.refreshView.delegate = self;
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationToScrollToTop) name: LXDClickNavigationBarNotification object: nil];
 }
 
 - (void)viewWillDisappear: (BOOL)animated
@@ -73,15 +84,6 @@
 - (void)dealloc
 {
     [_refreshView free];
-}
-
-
-#pragma mark Notification
-/// 接收点击导航栏的通知并让tableView滚动到顶部
-- (void)notificationToScrollToTop
-{
-    CGPoint topPoint = { -self.tableView.contentInset.left, -self.tableView.contentInset.top };
-    [self.tableView setContentOffset: topPoint animated: YES];
 }
 
 
@@ -106,10 +108,10 @@
     NSLog(@"call back and update acticles");
     [_refreshView endRefreshing];
     if (_articleManager.isUpdate) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [LXDQueue executeInMainQueue: ^{
             MBHUDHIDE
-            [self.tableView reloadData];
-        });
+            [self.tableView reloadSections: [NSIndexSet indexSetWithIndex: 0] withRowAnimation: UITableViewRowAnimationFade];
+        }];
     }
 }
 
@@ -157,7 +159,7 @@ static FORCE_INLINE NSMutableArray<NSNumber *> * kCellHeights() {
 #pragma mark <UITableViewDataSource>
 static NSMutableString * displayTimes;
 - (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section {
-    [self resetDisplayTimes: displayTimes];
+//    [self resetDisplayTimes: displayTimes];
     return self.articleManager.allArticles.count;
 }
 
@@ -174,20 +176,14 @@ static NSMutableString * displayTimes;
 /// 单元格动画效果
 - (void)tableView: (UITableView *)tableView willDisplayCell: (UITableViewCell *)cell forRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    CGRect frame = cell.frame;
-    NSTimeInterval duration = [self timeIntervalForDisplayCell: cell atIndexPath: indexPath];
-    if (duration == 0.) { return; }
-    
-    NSTimeInterval delay = [self delayForDisplayCell: cell atIndexPath: indexPath];
-    [UIView animateWithDuration: duration delay: delay options: UIViewAnimationOptionCurveEaseOut animations: ^{
-        cell.frame = frame;
-    } completion: nil];
-}
-
-/// 预估单元格高度，减少计算量
-- (CGFloat)tableView: (UITableView *)tableView estimatedHeightForRowAtIndexPath: (NSIndexPath *)indexPath
-{
-    return 360.;
+//    CGRect frame = cell.frame;
+//    NSTimeInterval duration = [self timeIntervalForDisplayCell: cell atIndexPath: indexPath];
+//    if (duration == 0.) { return; }
+//    
+//    NSTimeInterval delay = [self delayForDisplayCell: cell atIndexPath: indexPath];
+//    [UIView animateWithDuration: duration delay: delay options: UIViewAnimationOptionCurveEaseOut animations: ^{
+//        cell.frame = frame;
+//    } completion: nil];
 }
 
 /// 动态计算单元格高度

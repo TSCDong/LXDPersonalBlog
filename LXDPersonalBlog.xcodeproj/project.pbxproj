@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF01E9F91C539535004E98BE /* LXDArticleController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF01E9EB1C539535004E98BE /* LXDArticleController.m */; };
-		EF01E9FA1C539535004E98BE /* LXDArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = EF01E9EE1C539535004E98BE /* LXDArticle.m */; };
-		EF01E9FB1C539535004E98BE /* LXDArticleCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = EF01E9F11C539535004E98BE /* LXDArticleCompiler.m */; };
-		EF01E9FC1C539535004E98BE /* LXDArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF01E9F31C539535004E98BE /* LXDArticleManager.m */; };
-		EF01E9FD1C539535004E98BE /* LXDArticleOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = EF01E9F51C539535004E98BE /* LXDArticleOperator.m */; };
-		EF01E9FE1C539535004E98BE /* LXDArticleStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EF01E9F71C539535004E98BE /* LXDArticleStorage.m */; };
-		EF01EA011C53955A004E98BE /* LXDRoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EF01EA001C53955A004E98BE /* LXDRoundButton.m */; };
 		EF09019F1C56373000412241 /* article_author.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0901681C56373000412241 /* article_author.png */; };
 		EF0901A01C56373000412241 /* article_author@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF0901691C56373000412241 /* article_author@2x.png */; };
 		EF0901A11C56373000412241 /* article_author@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF09016A1C56373000412241 /* article_author@3x.png */; };
@@ -65,35 +58,48 @@
 		EF0901CF1C56373000412241 /* tab_me_icon_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = EF09019C1C56373000412241 /* tab_me_icon_hl.png */; };
 		EF0901D01C56373000412241 /* tab_me_icon_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF09019D1C56373000412241 /* tab_me_icon_hl@2x.png */; };
 		EF0901D11C56373000412241 /* tab_me_icon_hl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF09019E1C56373000412241 /* tab_me_icon_hl@3x.png */; };
-		EF0901D81C56680900412241 /* LXDFamousController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0901D71C56680900412241 /* LXDFamousController.m */; };
 		EF3AF65A1C4A44F00043B488 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF6591C4A44F00043B488 /* MBProgressHUD.m */; };
-		EF3AF6681C4A78DB0043B488 /* LXDBlogRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF6671C4A78DB0043B488 /* LXDBlogRequester.m */; };
-		EF3AF66B1C4A79040043B488 /* NSString+LXDVaild.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF66A1C4A79040043B488 /* NSString+LXDVaild.m */; };
-		EF3AF66E1C4A7A8A0043B488 /* NSArray+LXDFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF66D1C4A7A8A0043B488 /* NSArray+LXDFilter.m */; };
-		EF3AF6971C4B78220043B488 /* UIFont+LXDAdjustFont.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF6961C4B78220043B488 /* UIFont+LXDAdjustFont.m */; };
-		EF3AF6A01C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3AF69D1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m */; };
-		EF7749411C586D22008A12ED /* LXDScaleTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7749401C586D22008A12ED /* LXDScaleTransitionAnimation.m */; };
-		EF7749451C586E0E008A12ED /* LXDBaseTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7749441C586E0E008A12ED /* LXDBaseTransitionAnimation.m */; };
-		EFA17FB11C448FC600D93181 /* LXDMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA17FB01C448FC600D93181 /* LXDMainController.m */; };
-		EFA17FC81C44D69200D93181 /* UIView+LXDEasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA17FC71C44D69200D93181 /* UIView+LXDEasyFrame.m */; };
-		EFD2D4EB1C44F6C7002E4646 /* LXDBlogController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2D4EA1C44F6C7002E4646 /* LXDBlogController.m */; };
+		EF3B7E491CD2E98500834790 /* LXDBlogController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E0E1CD2E98500834790 /* LXDBlogController.m */; };
+		EF3B7E4A1CD2E98500834790 /* LXDBlogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E111CD2E98500834790 /* LXDBlogCell.m */; };
+		EF3B7E4B1CD2E98500834790 /* NSArray+LXDFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E141CD2E98500834790 /* NSArray+LXDFilter.m */; };
+		EF3B7E4C1CD2E98500834790 /* NSString+LXDVaild.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E161CD2E98500834790 /* NSString+LXDVaild.m */; };
+		EF3B7E4D1CD2E98500834790 /* UIColor+LXDNumberToColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E181CD2E98500834790 /* UIColor+LXDNumberToColor.m */; };
+		EF3B7E4E1CD2E98500834790 /* UIFont+LXDAdjustFont.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E1A1CD2E98500834790 /* UIFont+LXDAdjustFont.m */; };
+		EF3B7E4F1CD2E98500834790 /* UIImage+LXDRoundRectImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E1C1CD2E98500834790 /* UIImage+LXDRoundRectImage.m */; };
+		EF3B7E501CD2E98500834790 /* UIView+LXDEasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E1E1CD2E98500834790 /* UIView+LXDEasyFrame.m */; };
+		EF3B7E511CD2E98500834790 /* LineBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E211CD2E98500834790 /* LineBackgroundView.m */; };
+		EF3B7E521CD2E98500834790 /* LXDAlphaNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E231CD2E98500834790 /* LXDAlphaNavigationController.m */; };
+		EF3B7E531CD2E98500834790 /* LXDRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E251CD2E98500834790 /* LXDRefreshView.m */; };
+		EF3B7E541CD2E98500834790 /* LXDShadowAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E271CD2E98500834790 /* LXDShadowAlertView.m */; };
+		EF3B7E551CD2E98500834790 /* LXDFamousController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E2B1CD2E98500834790 /* LXDFamousController.m */; };
+		EF3B7E561CD2E98500834790 /* LXDGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E2F1CD2E98500834790 /* LXDGroupController.m */; };
+		EF3B7E571CD2E98500834790 /* LXDGroupLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E321CD2E98500834790 /* LXDGroupLayout.m */; };
+		EF3B7E581CD2E98500834790 /* LXDGroupArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E351CD2E98500834790 /* LXDGroupArticleCell.m */; };
+		EF3B7E591CD2E98500834790 /* LXDGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E371CD2E98500834790 /* LXDGroupCell.m */; };
+		EF3B7E5A1CD2E98500834790 /* LXDSnapView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E391CD2E98500834790 /* LXDSnapView.m */; };
+		EF3B7E5B1CD2E98500834790 /* LXDMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E3D1CD2E98500834790 /* LXDMainController.m */; };
+		EF3B7E5C1CD2E98500834790 /* LXDBlogRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E401CD2E98500834790 /* LXDBlogRequester.m */; };
+		EF3B7E5D1CD2E98500834790 /* LXDBaseTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E441CD2E98500834790 /* LXDBaseTransitionAnimation.m */; };
+		EF3B7E5E1CD2E98500834790 /* LXDNavigationTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E461CD2E98500834790 /* LXDNavigationTransitionAnimation.m */; };
+		EF3B7E5F1CD2E98500834790 /* LXDScaleTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E481CD2E98500834790 /* LXDScaleTransitionAnimation.m */; };
+		EF3B7E641CD2EB6300834790 /* LXDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E631CD2EB6300834790 /* LXDQueue.m */; };
+		EF3B7E781CD2EC8500834790 /* LXDArticleController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E681CD2EC8500834790 /* LXDArticleController.m */; };
+		EF3B7E791CD2EC8500834790 /* LXDArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E6B1CD2EC8500834790 /* LXDArticle.m */; };
+		EF3B7E7A1CD2EC8500834790 /* LXDArticleCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E6E1CD2EC8500834790 /* LXDArticleCompiler.m */; };
+		EF3B7E7B1CD2EC8500834790 /* LXDArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E701CD2EC8500834790 /* LXDArticleManager.m */; };
+		EF3B7E7C1CD2EC8500834790 /* LXDArticleOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E721CD2EC8500834790 /* LXDArticleOperator.m */; };
+		EF3B7E7D1CD2EC8500834790 /* LXDArticleStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E741CD2EC8500834790 /* LXDArticleStorage.m */; };
+		EF3B7E7E1CD2EC8500834790 /* LXDRoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E771CD2EC8500834790 /* LXDRoundButton.m */; };
+		EF3B7E811CD2F24F00834790 /* LXDLineBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E801CD2F24F00834790 /* LXDLineBackgroundView.m */; };
+		EF3B7E841CD2F8EA00834790 /* UILabel+LXDDesignedInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E831CD2F8EA00834790 /* UILabel+LXDDesignedInitializer.m */; };
+		EF3B7E891CD30DA200834790 /* LXDBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E881CD30DA200834790 /* LXDBaseController.m */; };
+		EF3B7E8C1CD30E4100834790 /* LXDBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3B7E8B1CD30E4100834790 /* LXDBaseTableViewController.m */; };
 		EFD2D4ED1C44F8BA002E4646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFD2D4EC1C44F8BA002E4646 /* Assets.xcassets */; };
-		EFD2D4F01C44F9C0002E4646 /* LXDBlogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2D4EF1C44F9C0002E4646 /* LXDBlogCell.m */; };
-		EFD2D5071C450830002E4646 /* UIImage+LXDRoundRectImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2D5061C450830002E4646 /* UIImage+LXDRoundRectImage.m */; };
-		EFE4906E1C4C92DF00E96491 /* LXDAlphaNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4906B1C4C92DF00E96491 /* LXDAlphaNavigationController.m */; };
-		EFE4906F1C4C92DF00E96491 /* LXDShadowAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4906D1C4C92DF00E96491 /* LXDShadowAlertView.m */; };
-		EFE490721C4C933100E96491 /* LXDRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE490711C4C933100E96491 /* LXDRefreshView.m */; };
 		EFE7B14B1C57198200640A2F /* Default-375w-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B1461C57198200640A2F /* Default-375w-667h@2x.png */; };
 		EFE7B14C1C57198200640A2F /* Default-424w-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B1471C57198200640A2F /* Default-424w-736h@3x.png */; };
 		EFE7B14D1C57198200640A2F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B1481C57198200640A2F /* Default-568h@2x.png */; };
 		EFE7B14E1C57198200640A2F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B1491C57198200640A2F /* Default.png */; };
 		EFE7B14F1C57198200640A2F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFE7B14A1C57198200640A2F /* Default@2x.png */; };
-		EFE82EB71C4F16DE0016F8DD /* LXDGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82EB61C4F16DE0016F8DD /* LXDGroupController.m */; };
-		EFE82EBA1C4F1AA80016F8DD /* UIColor+LXDNumberToColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82EB91C4F1AA80016F8DD /* UIColor+LXDNumberToColor.m */; };
-		EFE82EBD1C4F1D660016F8DD /* LXDGroupLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82EBC1C4F1D660016F8DD /* LXDGroupLayout.m */; };
-		EFE82EC61C4F2B7E0016F8DD /* LXDGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82EC51C4F2B7E0016F8DD /* LXDGroupCell.m */; };
-		EFE82EC91C4F4D2B0016F8DD /* LXDSnapView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82EC81C4F4D2B0016F8DD /* LXDSnapView.m */; };
-		EFE82ECC1C4F5BBC0016F8DD /* LXDGroupArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE82ECB1C4F5BBC0016F8DD /* LXDGroupArticleCell.m */; };
 		EFEEDE9E1C43B3B100B2B2B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEEDE9D1C43B3B100B2B2B2 /* main.m */; };
 		EFEEDEA11C43B3B100B2B2B2 /* LXDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEEDEA01C43B3B100B2B2B2 /* LXDAppDelegate.m */; };
 		EFEEDEA71C43B3B100B2B2B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFEEDEA51C43B3B100B2B2B2 /* Main.storyboard */; };
@@ -120,20 +126,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EF01E9EA1C539535004E98BE /* LXDArticleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleController.h; sourceTree = "<group>"; };
-		EF01E9EB1C539535004E98BE /* LXDArticleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleController.m; sourceTree = "<group>"; };
-		EF01E9ED1C539535004E98BE /* LXDArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticle.h; sourceTree = "<group>"; };
-		EF01E9EE1C539535004E98BE /* LXDArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticle.m; sourceTree = "<group>"; };
-		EF01E9F01C539535004E98BE /* LXDArticleCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleCompiler.h; sourceTree = "<group>"; };
-		EF01E9F11C539535004E98BE /* LXDArticleCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleCompiler.m; sourceTree = "<group>"; };
-		EF01E9F21C539535004E98BE /* LXDArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleManager.h; sourceTree = "<group>"; };
-		EF01E9F31C539535004E98BE /* LXDArticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleManager.m; sourceTree = "<group>"; };
-		EF01E9F41C539535004E98BE /* LXDArticleOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleOperator.h; sourceTree = "<group>"; };
-		EF01E9F51C539535004E98BE /* LXDArticleOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleOperator.m; sourceTree = "<group>"; };
-		EF01E9F61C539535004E98BE /* LXDArticleStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleStorage.h; sourceTree = "<group>"; };
-		EF01E9F71C539535004E98BE /* LXDArticleStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleStorage.m; sourceTree = "<group>"; };
-		EF01E9FF1C53955A004E98BE /* LXDRoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDRoundButton.h; sourceTree = "<group>"; };
-		EF01EA001C53955A004E98BE /* LXDRoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDRoundButton.m; sourceTree = "<group>"; };
 		EF0901681C56373000412241 /* article_author.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = article_author.png; sourceTree = "<group>"; };
 		EF0901691C56373000412241 /* article_author@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "article_author@2x.png"; sourceTree = "<group>"; };
 		EF09016A1C56373000412241 /* article_author@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "article_author@3x.png"; sourceTree = "<group>"; };
@@ -185,63 +177,89 @@
 		EF09019C1C56373000412241 /* tab_me_icon_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_me_icon_hl.png; sourceTree = "<group>"; };
 		EF09019D1C56373000412241 /* tab_me_icon_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_me_icon_hl@2x.png"; sourceTree = "<group>"; };
 		EF09019E1C56373000412241 /* tab_me_icon_hl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_me_icon_hl@3x.png"; sourceTree = "<group>"; };
-		EF0901D61C56680900412241 /* LXDFamousController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDFamousController.h; sourceTree = "<group>"; };
-		EF0901D71C56680900412241 /* LXDFamousController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDFamousController.m; sourceTree = "<group>"; };
 		EF3AF6581C4A44F00043B488 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		EF3AF6591C4A44F00043B488 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		EF3AF6661C4A78DB0043B488 /* LXDBlogRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBlogRequester.h; sourceTree = "<group>"; };
-		EF3AF6671C4A78DB0043B488 /* LXDBlogRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBlogRequester.m; sourceTree = "<group>"; };
-		EF3AF6691C4A79040043B488 /* NSString+LXDVaild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LXDVaild.h"; sourceTree = "<group>"; };
-		EF3AF66A1C4A79040043B488 /* NSString+LXDVaild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LXDVaild.m"; sourceTree = "<group>"; };
-		EF3AF66C1C4A7A8A0043B488 /* NSArray+LXDFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+LXDFilter.h"; sourceTree = "<group>"; };
-		EF3AF66D1C4A7A8A0043B488 /* NSArray+LXDFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LXDFilter.m"; sourceTree = "<group>"; };
-		EF3AF6951C4B78220043B488 /* UIFont+LXDAdjustFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+LXDAdjustFont.h"; sourceTree = "<group>"; };
-		EF3AF6961C4B78220043B488 /* UIFont+LXDAdjustFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LXDAdjustFont.m"; sourceTree = "<group>"; };
-		EF3AF69C1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDNavigationTransitionAnimation.h; sourceTree = "<group>"; };
-		EF3AF69D1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDNavigationTransitionAnimation.m; sourceTree = "<group>"; };
-		EF77493F1C586D22008A12ED /* LXDScaleTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDScaleTransitionAnimation.h; sourceTree = "<group>"; };
-		EF7749401C586D22008A12ED /* LXDScaleTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDScaleTransitionAnimation.m; sourceTree = "<group>"; };
-		EF7749431C586E0E008A12ED /* LXDBaseTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBaseTransitionAnimation.h; sourceTree = "<group>"; };
-		EF7749441C586E0E008A12ED /* LXDBaseTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBaseTransitionAnimation.m; sourceTree = "<group>"; };
-		EFA17FAF1C448FC600D93181 /* LXDMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDMainController.h; sourceTree = "<group>"; };
-		EFA17FB01C448FC600D93181 /* LXDMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDMainController.m; sourceTree = "<group>"; };
-		EFA17FB21C4497D300D93181 /* LXDPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXDPrefixHeader.pch; sourceTree = "<group>"; };
-		EFA17FC61C44D69200D93181 /* UIView+LXDEasyFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LXDEasyFrame.h"; sourceTree = "<group>"; };
-		EFA17FC71C44D69200D93181 /* UIView+LXDEasyFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LXDEasyFrame.m"; sourceTree = "<group>"; };
-		EFD2D4E91C44F6C7002E4646 /* LXDBlogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBlogController.h; sourceTree = "<group>"; };
-		EFD2D4EA1C44F6C7002E4646 /* LXDBlogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBlogController.m; sourceTree = "<group>"; };
+		EF3B7E0D1CD2E98500834790 /* LXDBlogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBlogController.h; sourceTree = "<group>"; };
+		EF3B7E0E1CD2E98500834790 /* LXDBlogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBlogController.m; sourceTree = "<group>"; };
+		EF3B7E101CD2E98500834790 /* LXDBlogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBlogCell.h; sourceTree = "<group>"; };
+		EF3B7E111CD2E98500834790 /* LXDBlogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBlogCell.m; sourceTree = "<group>"; };
+		EF3B7E131CD2E98500834790 /* NSArray+LXDFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+LXDFilter.h"; sourceTree = "<group>"; };
+		EF3B7E141CD2E98500834790 /* NSArray+LXDFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LXDFilter.m"; sourceTree = "<group>"; };
+		EF3B7E151CD2E98500834790 /* NSString+LXDVaild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LXDVaild.h"; sourceTree = "<group>"; };
+		EF3B7E161CD2E98500834790 /* NSString+LXDVaild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LXDVaild.m"; sourceTree = "<group>"; };
+		EF3B7E171CD2E98500834790 /* UIColor+LXDNumberToColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LXDNumberToColor.h"; sourceTree = "<group>"; };
+		EF3B7E181CD2E98500834790 /* UIColor+LXDNumberToColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LXDNumberToColor.m"; sourceTree = "<group>"; };
+		EF3B7E191CD2E98500834790 /* UIFont+LXDAdjustFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+LXDAdjustFont.h"; sourceTree = "<group>"; };
+		EF3B7E1A1CD2E98500834790 /* UIFont+LXDAdjustFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LXDAdjustFont.m"; sourceTree = "<group>"; };
+		EF3B7E1B1CD2E98500834790 /* UIImage+LXDRoundRectImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LXDRoundRectImage.h"; sourceTree = "<group>"; };
+		EF3B7E1C1CD2E98500834790 /* UIImage+LXDRoundRectImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LXDRoundRectImage.m"; sourceTree = "<group>"; };
+		EF3B7E1D1CD2E98500834790 /* UIView+LXDEasyFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LXDEasyFrame.h"; sourceTree = "<group>"; };
+		EF3B7E1E1CD2E98500834790 /* UIView+LXDEasyFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LXDEasyFrame.m"; sourceTree = "<group>"; };
+		EF3B7E201CD2E98500834790 /* LineBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineBackgroundView.h; sourceTree = "<group>"; };
+		EF3B7E211CD2E98500834790 /* LineBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineBackgroundView.m; sourceTree = "<group>"; };
+		EF3B7E221CD2E98500834790 /* LXDAlphaNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDAlphaNavigationController.h; sourceTree = "<group>"; };
+		EF3B7E231CD2E98500834790 /* LXDAlphaNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDAlphaNavigationController.m; sourceTree = "<group>"; };
+		EF3B7E241CD2E98500834790 /* LXDRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDRefreshView.h; sourceTree = "<group>"; };
+		EF3B7E251CD2E98500834790 /* LXDRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDRefreshView.m; sourceTree = "<group>"; };
+		EF3B7E261CD2E98500834790 /* LXDShadowAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDShadowAlertView.h; sourceTree = "<group>"; };
+		EF3B7E271CD2E98500834790 /* LXDShadowAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDShadowAlertView.m; sourceTree = "<group>"; };
+		EF3B7E2A1CD2E98500834790 /* LXDFamousController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDFamousController.h; sourceTree = "<group>"; };
+		EF3B7E2B1CD2E98500834790 /* LXDFamousController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDFamousController.m; sourceTree = "<group>"; };
+		EF3B7E2E1CD2E98500834790 /* LXDGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupController.h; sourceTree = "<group>"; };
+		EF3B7E2F1CD2E98500834790 /* LXDGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupController.m; sourceTree = "<group>"; };
+		EF3B7E311CD2E98500834790 /* LXDGroupLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupLayout.h; sourceTree = "<group>"; };
+		EF3B7E321CD2E98500834790 /* LXDGroupLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupLayout.m; sourceTree = "<group>"; };
+		EF3B7E341CD2E98500834790 /* LXDGroupArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupArticleCell.h; sourceTree = "<group>"; };
+		EF3B7E351CD2E98500834790 /* LXDGroupArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupArticleCell.m; sourceTree = "<group>"; };
+		EF3B7E361CD2E98500834790 /* LXDGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupCell.h; sourceTree = "<group>"; };
+		EF3B7E371CD2E98500834790 /* LXDGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupCell.m; sourceTree = "<group>"; };
+		EF3B7E381CD2E98500834790 /* LXDSnapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDSnapView.h; sourceTree = "<group>"; };
+		EF3B7E391CD2E98500834790 /* LXDSnapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDSnapView.m; sourceTree = "<group>"; };
+		EF3B7E3C1CD2E98500834790 /* LXDMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDMainController.h; sourceTree = "<group>"; };
+		EF3B7E3D1CD2E98500834790 /* LXDMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDMainController.m; sourceTree = "<group>"; };
+		EF3B7E3F1CD2E98500834790 /* LXDBlogRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBlogRequester.h; sourceTree = "<group>"; };
+		EF3B7E401CD2E98500834790 /* LXDBlogRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBlogRequester.m; sourceTree = "<group>"; };
+		EF3B7E431CD2E98500834790 /* LXDBaseTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBaseTransitionAnimation.h; sourceTree = "<group>"; };
+		EF3B7E441CD2E98500834790 /* LXDBaseTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBaseTransitionAnimation.m; sourceTree = "<group>"; };
+		EF3B7E451CD2E98500834790 /* LXDNavigationTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDNavigationTransitionAnimation.h; sourceTree = "<group>"; };
+		EF3B7E461CD2E98500834790 /* LXDNavigationTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDNavigationTransitionAnimation.m; sourceTree = "<group>"; };
+		EF3B7E471CD2E98500834790 /* LXDScaleTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDScaleTransitionAnimation.h; sourceTree = "<group>"; };
+		EF3B7E481CD2E98500834790 /* LXDScaleTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDScaleTransitionAnimation.m; sourceTree = "<group>"; };
+		EF3B7E621CD2EB6300834790 /* LXDQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDQueue.h; sourceTree = "<group>"; };
+		EF3B7E631CD2EB6300834790 /* LXDQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDQueue.m; sourceTree = "<group>"; };
+		EF3B7E671CD2EC8500834790 /* LXDArticleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleController.h; sourceTree = "<group>"; };
+		EF3B7E681CD2EC8500834790 /* LXDArticleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleController.m; sourceTree = "<group>"; };
+		EF3B7E6A1CD2EC8500834790 /* LXDArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticle.h; sourceTree = "<group>"; };
+		EF3B7E6B1CD2EC8500834790 /* LXDArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticle.m; sourceTree = "<group>"; };
+		EF3B7E6D1CD2EC8500834790 /* LXDArticleCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleCompiler.h; sourceTree = "<group>"; };
+		EF3B7E6E1CD2EC8500834790 /* LXDArticleCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleCompiler.m; sourceTree = "<group>"; };
+		EF3B7E6F1CD2EC8500834790 /* LXDArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleManager.h; sourceTree = "<group>"; };
+		EF3B7E701CD2EC8500834790 /* LXDArticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleManager.m; sourceTree = "<group>"; };
+		EF3B7E711CD2EC8500834790 /* LXDArticleOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleOperator.h; sourceTree = "<group>"; };
+		EF3B7E721CD2EC8500834790 /* LXDArticleOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleOperator.m; sourceTree = "<group>"; };
+		EF3B7E731CD2EC8500834790 /* LXDArticleStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDArticleStorage.h; sourceTree = "<group>"; };
+		EF3B7E741CD2EC8500834790 /* LXDArticleStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDArticleStorage.m; sourceTree = "<group>"; };
+		EF3B7E761CD2EC8500834790 /* LXDRoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDRoundButton.h; sourceTree = "<group>"; };
+		EF3B7E771CD2EC8500834790 /* LXDRoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDRoundButton.m; sourceTree = "<group>"; };
+		EF3B7E7F1CD2F24F00834790 /* LXDLineBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDLineBackgroundView.h; sourceTree = "<group>"; };
+		EF3B7E801CD2F24F00834790 /* LXDLineBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDLineBackgroundView.m; sourceTree = "<group>"; };
+		EF3B7E821CD2F8EA00834790 /* UILabel+LXDDesignedInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LXDDesignedInitializer.h"; sourceTree = "<group>"; };
+		EF3B7E831CD2F8EA00834790 /* UILabel+LXDDesignedInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LXDDesignedInitializer.m"; sourceTree = "<group>"; };
+		EF3B7E871CD30DA200834790 /* LXDBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBaseController.h; sourceTree = "<group>"; };
+		EF3B7E881CD30DA200834790 /* LXDBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBaseController.m; sourceTree = "<group>"; };
+		EF3B7E8A1CD30E4100834790 /* LXDBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBaseTableViewController.h; sourceTree = "<group>"; };
+		EF3B7E8B1CD30E4100834790 /* LXDBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBaseTableViewController.m; sourceTree = "<group>"; };
+		EFA17FB21C4497D300D93181 /* LXDPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LXDPrefixHeader.pch; path = ../../LXDPrefixHeader.pch; sourceTree = "<group>"; };
 		EFD2D4EC1C44F8BA002E4646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EFD2D4EE1C44F9C0002E4646 /* LXDBlogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDBlogCell.h; sourceTree = "<group>"; };
-		EFD2D4EF1C44F9C0002E4646 /* LXDBlogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDBlogCell.m; sourceTree = "<group>"; };
-		EFD2D5051C450830002E4646 /* UIImage+LXDRoundRectImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LXDRoundRectImage.h"; sourceTree = "<group>"; };
-		EFD2D5061C450830002E4646 /* UIImage+LXDRoundRectImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LXDRoundRectImage.m"; sourceTree = "<group>"; };
-		EFE4906A1C4C92DF00E96491 /* LXDAlphaNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDAlphaNavigationController.h; sourceTree = "<group>"; };
-		EFE4906B1C4C92DF00E96491 /* LXDAlphaNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDAlphaNavigationController.m; sourceTree = "<group>"; };
-		EFE4906C1C4C92DF00E96491 /* LXDShadowAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDShadowAlertView.h; sourceTree = "<group>"; };
-		EFE4906D1C4C92DF00E96491 /* LXDShadowAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDShadowAlertView.m; sourceTree = "<group>"; };
-		EFE490701C4C933100E96491 /* LXDRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDRefreshView.h; sourceTree = "<group>"; };
-		EFE490711C4C933100E96491 /* LXDRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDRefreshView.m; sourceTree = "<group>"; };
 		EFE7B1461C57198200640A2F /* Default-375w-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-375w-667h@2x.png"; sourceTree = "<group>"; };
 		EFE7B1471C57198200640A2F /* Default-424w-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-424w-736h@3x.png"; sourceTree = "<group>"; };
 		EFE7B1481C57198200640A2F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EFE7B1491C57198200640A2F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		EFE7B14A1C57198200640A2F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		EFE82EB51C4F16DE0016F8DD /* LXDGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupController.h; sourceTree = "<group>"; };
-		EFE82EB61C4F16DE0016F8DD /* LXDGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupController.m; sourceTree = "<group>"; };
-		EFE82EB81C4F1AA80016F8DD /* UIColor+LXDNumberToColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LXDNumberToColor.h"; sourceTree = "<group>"; };
-		EFE82EB91C4F1AA80016F8DD /* UIColor+LXDNumberToColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LXDNumberToColor.m"; sourceTree = "<group>"; };
-		EFE82EBB1C4F1D660016F8DD /* LXDGroupLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupLayout.h; sourceTree = "<group>"; };
-		EFE82EBC1C4F1D660016F8DD /* LXDGroupLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupLayout.m; sourceTree = "<group>"; };
-		EFE82EC41C4F2B7E0016F8DD /* LXDGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupCell.h; sourceTree = "<group>"; };
-		EFE82EC51C4F2B7E0016F8DD /* LXDGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupCell.m; sourceTree = "<group>"; };
-		EFE82EC71C4F4D2B0016F8DD /* LXDSnapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDSnapView.h; sourceTree = "<group>"; };
-		EFE82EC81C4F4D2B0016F8DD /* LXDSnapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDSnapView.m; sourceTree = "<group>"; };
-		EFE82ECA1C4F5BBC0016F8DD /* LXDGroupArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDGroupArticleCell.h; sourceTree = "<group>"; };
-		EFE82ECB1C4F5BBC0016F8DD /* LXDGroupArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDGroupArticleCell.m; sourceTree = "<group>"; };
 		EFEEDE991C43B3B100B2B2B2 /* LXDPersonalBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXDPersonalBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFEEDE9D1C43B3B100B2B2B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EFEEDE9F1C43B3B100B2B2B2 /* LXDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXDAppDelegate.h; sourceTree = "<group>"; };
-		EFEEDEA01C43B3B100B2B2B2 /* LXDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXDAppDelegate.m; sourceTree = "<group>"; };
+		EFEEDE9F1C43B3B100B2B2B2 /* LXDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LXDAppDelegate.h; path = ../../LXDAppDelegate.h; sourceTree = "<group>"; };
+		EFEEDEA01C43B3B100B2B2B2 /* LXDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LXDAppDelegate.m; path = ../../LXDAppDelegate.m; sourceTree = "<group>"; };
 		EFEEDEA61C43B3B100B2B2B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFEEDEAB1C43B3B100B2B2B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFEEDEAD1C43B3B100B2B2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -278,48 +296,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EF01E9E91C539535004E98BE /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				EF01E9EA1C539535004E98BE /* LXDArticleController.h */,
-				EF01E9EB1C539535004E98BE /* LXDArticleController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		EF01E9EC1C539535004E98BE /* model */ = {
-			isa = PBXGroup;
-			children = (
-				EF01E9ED1C539535004E98BE /* LXDArticle.h */,
-				EF01E9EE1C539535004E98BE /* LXDArticle.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		EF01E9EF1C539535004E98BE /* tool */ = {
-			isa = PBXGroup;
-			children = (
-				EF01E9F01C539535004E98BE /* LXDArticleCompiler.h */,
-				EF01E9F11C539535004E98BE /* LXDArticleCompiler.m */,
-				EF01E9F21C539535004E98BE /* LXDArticleManager.h */,
-				EF01E9F31C539535004E98BE /* LXDArticleManager.m */,
-				EF01E9F41C539535004E98BE /* LXDArticleOperator.h */,
-				EF01E9F51C539535004E98BE /* LXDArticleOperator.m */,
-				EF01E9F61C539535004E98BE /* LXDArticleStorage.h */,
-				EF01E9F71C539535004E98BE /* LXDArticleStorage.m */,
-			);
-			path = tool;
-			sourceTree = "<group>";
-		};
-		EF01E9F81C539535004E98BE /* view */ = {
-			isa = PBXGroup;
-			children = (
-				EF01E9FF1C53955A004E98BE /* LXDRoundButton.h */,
-				EF01EA001C53955A004E98BE /* LXDRoundButton.m */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		EF0901661C56373000412241 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,39 +395,6 @@
 			path = tab;
 			sourceTree = "<group>";
 		};
-		EF0901D21C5667CA00412241 /* Famous */ = {
-			isa = PBXGroup;
-			children = (
-				EF0901D31C5667CA00412241 /* controller */,
-				EF0901D41C5667CA00412241 /* model */,
-				EF0901D51C5667CA00412241 /* view */,
-			);
-			path = Famous;
-			sourceTree = "<group>";
-		};
-		EF0901D31C5667CA00412241 /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				EF0901D61C56680900412241 /* LXDFamousController.h */,
-				EF0901D71C56680900412241 /* LXDFamousController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		EF0901D41C5667CA00412241 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		EF0901D51C5667CA00412241 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		EF3AF6561C4A44F00043B488 /* libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,137 +412,278 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
-		EF3AF65B1C4A4A4A0043B488 /* Article */ = {
+		EF3B7E0A1CD2E98500834790 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				EF01E9EF1C539535004E98BE /* tool */,
-				EF01E9E91C539535004E98BE /* controller */,
-				EF01E9EC1C539535004E98BE /* model */,
-				EF01E9F81C539535004E98BE /* view */,
+				EF3B7E861CD30D8C00834790 /* AbstractClass */,
+				EF3B7E651CD2EC8500834790 /* Article */,
+				EF3B7E0B1CD2E98500834790 /* Blog */,
+				EF3B7E121CD2E98500834790 /* Category */,
+				EF3B7E1F1CD2E98500834790 /* Controls */,
+				EF3B7E281CD2E98500834790 /* Famous */,
+				EF3B7E2C1CD2E98500834790 /* Group */,
+				EF3B7E3A1CD2E98500834790 /* Main */,
+				EF3B7E3E1CD2E98500834790 /* Network */,
+				EF3B7E421CD2E98500834790 /* TransitionAnimation */,
+				EF3B7E411CD2E98500834790 /* Tool */,
+				EF3B7E611CD2E9E600834790 /* IB */,
+				EF3B7E601CD2E99500834790 /* Other */,
 			);
-			path = Article;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		EF3AF6651C4A78DB0043B488 /* Network */ = {
+		EF3B7E0B1CD2E98500834790 /* Blog */ = {
 			isa = PBXGroup;
 			children = (
-				EF3AF6661C4A78DB0043B488 /* LXDBlogRequester.h */,
-				EF3AF6671C4A78DB0043B488 /* LXDBlogRequester.m */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		EF3AF69B1C4BC3310043B488 /* TransitionAnimation */ = {
-			isa = PBXGroup;
-			children = (
-				EF7749431C586E0E008A12ED /* LXDBaseTransitionAnimation.h */,
-				EF7749441C586E0E008A12ED /* LXDBaseTransitionAnimation.m */,
-				EF77493F1C586D22008A12ED /* LXDScaleTransitionAnimation.h */,
-				EF7749401C586D22008A12ED /* LXDScaleTransitionAnimation.m */,
-				EF3AF69C1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.h */,
-				EF3AF69D1C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m */,
-			);
-			path = TransitionAnimation;
-			sourceTree = "<group>";
-		};
-		EFA17F9F1C448EFA00D93181 /* Blog */ = {
-			isa = PBXGroup;
-			children = (
-				EFA17FA01C448EFA00D93181 /* controller */,
-				EFA17FA11C448EFA00D93181 /* model */,
-				EFA17FA21C448EFA00D93181 /* view */,
+				EF3B7E0C1CD2E98500834790 /* controller */,
+				EF3B7E0F1CD2E98500834790 /* view */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
 		};
-		EFA17FA01C448EFA00D93181 /* controller */ = {
+		EF3B7E0C1CD2E98500834790 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				EFD2D4E91C44F6C7002E4646 /* LXDBlogController.h */,
-				EFD2D4EA1C44F6C7002E4646 /* LXDBlogController.m */,
+				EF3B7E0D1CD2E98500834790 /* LXDBlogController.h */,
+				EF3B7E0E1CD2E98500834790 /* LXDBlogController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
 		};
-		EFA17FA11C448EFA00D93181 /* model */ = {
+		EF3B7E0F1CD2E98500834790 /* view */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		EFA17FA21C448EFA00D93181 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				EFD2D4EE1C44F9C0002E4646 /* LXDBlogCell.h */,
-				EFD2D4EF1C44F9C0002E4646 /* LXDBlogCell.m */,
+				EF3B7E101CD2E98500834790 /* LXDBlogCell.h */,
+				EF3B7E111CD2E98500834790 /* LXDBlogCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
 		};
-		EFA17FA71C448EFA00D93181 /* Main */ = {
+		EF3B7E121CD2E98500834790 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				EFA17FA81C448EFA00D93181 /* controller */,
-				EFA17FA91C448EFA00D93181 /* model */,
-				EFA17FAA1C448EFA00D93181 /* view */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		EFA17FA81C448EFA00D93181 /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				EFA17FAF1C448FC600D93181 /* LXDMainController.h */,
-				EFA17FB01C448FC600D93181 /* LXDMainController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		EFA17FA91C448EFA00D93181 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		EFA17FAA1C448EFA00D93181 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		EFA17FC51C44D67C00D93181 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				EF3AF66C1C4A7A8A0043B488 /* NSArray+LXDFilter.h */,
-				EF3AF66D1C4A7A8A0043B488 /* NSArray+LXDFilter.m */,
-				EF3AF6691C4A79040043B488 /* NSString+LXDVaild.h */,
-				EF3AF66A1C4A79040043B488 /* NSString+LXDVaild.m */,
-				EF3AF6951C4B78220043B488 /* UIFont+LXDAdjustFont.h */,
-				EF3AF6961C4B78220043B488 /* UIFont+LXDAdjustFont.m */,
-				EFA17FC61C44D69200D93181 /* UIView+LXDEasyFrame.h */,
-				EFA17FC71C44D69200D93181 /* UIView+LXDEasyFrame.m */,
-				EFE82EB81C4F1AA80016F8DD /* UIColor+LXDNumberToColor.h */,
-				EFE82EB91C4F1AA80016F8DD /* UIColor+LXDNumberToColor.m */,
-				EFD2D5051C450830002E4646 /* UIImage+LXDRoundRectImage.h */,
-				EFD2D5061C450830002E4646 /* UIImage+LXDRoundRectImage.m */,
+				EF3B7E131CD2E98500834790 /* NSArray+LXDFilter.h */,
+				EF3B7E141CD2E98500834790 /* NSArray+LXDFilter.m */,
+				EF3B7E151CD2E98500834790 /* NSString+LXDVaild.h */,
+				EF3B7E161CD2E98500834790 /* NSString+LXDVaild.m */,
+				EF3B7E171CD2E98500834790 /* UIColor+LXDNumberToColor.h */,
+				EF3B7E181CD2E98500834790 /* UIColor+LXDNumberToColor.m */,
+				EF3B7E191CD2E98500834790 /* UIFont+LXDAdjustFont.h */,
+				EF3B7E1A1CD2E98500834790 /* UIFont+LXDAdjustFont.m */,
+				EF3B7E1B1CD2E98500834790 /* UIImage+LXDRoundRectImage.h */,
+				EF3B7E1C1CD2E98500834790 /* UIImage+LXDRoundRectImage.m */,
+				EF3B7E1D1CD2E98500834790 /* UIView+LXDEasyFrame.h */,
+				EF3B7E1E1CD2E98500834790 /* UIView+LXDEasyFrame.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
 		};
-		EFE490691C4C92DF00E96491 /* Controls */ = {
+		EF3B7E1F1CD2E98500834790 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				EFE490701C4C933100E96491 /* LXDRefreshView.h */,
-				EFE490711C4C933100E96491 /* LXDRefreshView.m */,
-				EFE4906C1C4C92DF00E96491 /* LXDShadowAlertView.h */,
-				EFE4906D1C4C92DF00E96491 /* LXDShadowAlertView.m */,
-				EFE4906A1C4C92DF00E96491 /* LXDAlphaNavigationController.h */,
-				EFE4906B1C4C92DF00E96491 /* LXDAlphaNavigationController.m */,
+				EF3B7E201CD2E98500834790 /* LineBackgroundView.h */,
+				EF3B7E211CD2E98500834790 /* LineBackgroundView.m */,
+				EF3B7E241CD2E98500834790 /* LXDRefreshView.h */,
+				EF3B7E251CD2E98500834790 /* LXDRefreshView.m */,
+				EF3B7E261CD2E98500834790 /* LXDShadowAlertView.h */,
+				EF3B7E271CD2E98500834790 /* LXDShadowAlertView.m */,
+				EF3B7E7F1CD2F24F00834790 /* LXDLineBackgroundView.h */,
+				EF3B7E801CD2F24F00834790 /* LXDLineBackgroundView.m */,
+				EF3B7E221CD2E98500834790 /* LXDAlphaNavigationController.h */,
+				EF3B7E231CD2E98500834790 /* LXDAlphaNavigationController.m */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		EF3B7E281CD2E98500834790 /* Famous */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E291CD2E98500834790 /* controller */,
+			);
+			path = Famous;
+			sourceTree = "<group>";
+		};
+		EF3B7E291CD2E98500834790 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E2A1CD2E98500834790 /* LXDFamousController.h */,
+				EF3B7E2B1CD2E98500834790 /* LXDFamousController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		EF3B7E2C1CD2E98500834790 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E2D1CD2E98500834790 /* controller */,
+				EF3B7E301CD2E98500834790 /* model */,
+				EF3B7E331CD2E98500834790 /* view */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		EF3B7E2D1CD2E98500834790 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E2E1CD2E98500834790 /* LXDGroupController.h */,
+				EF3B7E2F1CD2E98500834790 /* LXDGroupController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		EF3B7E301CD2E98500834790 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E311CD2E98500834790 /* LXDGroupLayout.h */,
+				EF3B7E321CD2E98500834790 /* LXDGroupLayout.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		EF3B7E331CD2E98500834790 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E341CD2E98500834790 /* LXDGroupArticleCell.h */,
+				EF3B7E351CD2E98500834790 /* LXDGroupArticleCell.m */,
+				EF3B7E361CD2E98500834790 /* LXDGroupCell.h */,
+				EF3B7E371CD2E98500834790 /* LXDGroupCell.m */,
+				EF3B7E381CD2E98500834790 /* LXDSnapView.h */,
+				EF3B7E391CD2E98500834790 /* LXDSnapView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		EF3B7E3A1CD2E98500834790 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E3B1CD2E98500834790 /* controller */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EF3B7E3B1CD2E98500834790 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E3C1CD2E98500834790 /* LXDMainController.h */,
+				EF3B7E3D1CD2E98500834790 /* LXDMainController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		EF3B7E3E1CD2E98500834790 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E3F1CD2E98500834790 /* LXDBlogRequester.h */,
+				EF3B7E401CD2E98500834790 /* LXDBlogRequester.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EF3B7E411CD2E98500834790 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E821CD2F8EA00834790 /* UILabel+LXDDesignedInitializer.h */,
+				EF3B7E831CD2F8EA00834790 /* UILabel+LXDDesignedInitializer.m */,
+				EF3B7E621CD2EB6300834790 /* LXDQueue.h */,
+				EF3B7E631CD2EB6300834790 /* LXDQueue.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		EF3B7E421CD2E98500834790 /* TransitionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E431CD2E98500834790 /* LXDBaseTransitionAnimation.h */,
+				EF3B7E441CD2E98500834790 /* LXDBaseTransitionAnimation.m */,
+				EF3B7E451CD2E98500834790 /* LXDNavigationTransitionAnimation.h */,
+				EF3B7E461CD2E98500834790 /* LXDNavigationTransitionAnimation.m */,
+				EF3B7E471CD2E98500834790 /* LXDScaleTransitionAnimation.h */,
+				EF3B7E481CD2E98500834790 /* LXDScaleTransitionAnimation.m */,
+			);
+			path = TransitionAnimation;
+			sourceTree = "<group>";
+		};
+		EF3B7E601CD2E99500834790 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				EFEEDE9F1C43B3B100B2B2B2 /* LXDAppDelegate.h */,
+				EFEEDEA01C43B3B100B2B2B2 /* LXDAppDelegate.m */,
+				EFA17FB21C4497D300D93181 /* LXDPrefixHeader.pch */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		EF3B7E611CD2E9E600834790 /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				EFEEDEA51C43B3B100B2B2B2 /* Main.storyboard */,
+				EFEEDEAA1C43B3B100B2B2B2 /* LaunchScreen.storyboard */,
+			);
+			path = IB;
+			sourceTree = "<group>";
+		};
+		EF3B7E651CD2EC8500834790 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E661CD2EC8500834790 /* controller */,
+				EF3B7E691CD2EC8500834790 /* model */,
+				EF3B7E6C1CD2EC8500834790 /* tool */,
+				EF3B7E751CD2EC8500834790 /* view */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		EF3B7E661CD2EC8500834790 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E671CD2EC8500834790 /* LXDArticleController.h */,
+				EF3B7E681CD2EC8500834790 /* LXDArticleController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		EF3B7E691CD2EC8500834790 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E6A1CD2EC8500834790 /* LXDArticle.h */,
+				EF3B7E6B1CD2EC8500834790 /* LXDArticle.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		EF3B7E6C1CD2EC8500834790 /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E6D1CD2EC8500834790 /* LXDArticleCompiler.h */,
+				EF3B7E6E1CD2EC8500834790 /* LXDArticleCompiler.m */,
+				EF3B7E6F1CD2EC8500834790 /* LXDArticleManager.h */,
+				EF3B7E701CD2EC8500834790 /* LXDArticleManager.m */,
+				EF3B7E711CD2EC8500834790 /* LXDArticleOperator.h */,
+				EF3B7E721CD2EC8500834790 /* LXDArticleOperator.m */,
+				EF3B7E731CD2EC8500834790 /* LXDArticleStorage.h */,
+				EF3B7E741CD2EC8500834790 /* LXDArticleStorage.m */,
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
+		EF3B7E751CD2EC8500834790 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E761CD2EC8500834790 /* LXDRoundButton.h */,
+				EF3B7E771CD2EC8500834790 /* LXDRoundButton.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		EF3B7E861CD30D8C00834790 /* AbstractClass */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B7E871CD30DA200834790 /* LXDBaseController.h */,
+				EF3B7E881CD30DA200834790 /* LXDBaseController.m */,
+				EF3B7E8A1CD30E4100834790 /* LXDBaseTableViewController.h */,
+				EF3B7E8B1CD30E4100834790 /* LXDBaseTableViewController.m */,
+			);
+			path = AbstractClass;
 			sourceTree = "<group>";
 		};
 		EFE7B1451C57198200640A2F /* LaunchImage */ = {
@@ -612,47 +696,6 @@
 				EFE7B14A1C57198200640A2F /* Default@2x.png */,
 			);
 			path = LaunchImage;
-			sourceTree = "<group>";
-		};
-		EFE82EB11C4F16B50016F8DD /* Group */ = {
-			isa = PBXGroup;
-			children = (
-				EFE82EB21C4F16B50016F8DD /* controller */,
-				EFE82EB31C4F16B50016F8DD /* model */,
-				EFE82EB41C4F16B50016F8DD /* view */,
-			);
-			path = Group;
-			sourceTree = "<group>";
-		};
-		EFE82EB21C4F16B50016F8DD /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				EFE82EB51C4F16DE0016F8DD /* LXDGroupController.h */,
-				EFE82EB61C4F16DE0016F8DD /* LXDGroupController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		EFE82EB31C4F16B50016F8DD /* model */ = {
-			isa = PBXGroup;
-			children = (
-				EFE82EBB1C4F1D660016F8DD /* LXDGroupLayout.h */,
-				EFE82EBC1C4F1D660016F8DD /* LXDGroupLayout.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		EFE82EB41C4F16B50016F8DD /* view */ = {
-			isa = PBXGroup;
-			children = (
-				EFE82EC71C4F4D2B0016F8DD /* LXDSnapView.h */,
-				EFE82EC81C4F4D2B0016F8DD /* LXDSnapView.m */,
-				EFE82EC41C4F2B7E0016F8DD /* LXDGroupCell.h */,
-				EFE82EC51C4F2B7E0016F8DD /* LXDGroupCell.m */,
-				EFE82ECA1C4F5BBC0016F8DD /* LXDGroupArticleCell.h */,
-				EFE82ECB1C4F5BBC0016F8DD /* LXDGroupArticleCell.m */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		EFEEDE901C43B3B100B2B2B2 = {
@@ -680,20 +723,7 @@
 		EFEEDE9B1C43B3B100B2B2B2 /* LXDPersonalBlog */ = {
 			isa = PBXGroup;
 			children = (
-				EFA17FA71C448EFA00D93181 /* Main */,
-				EFA17F9F1C448EFA00D93181 /* Blog */,
-				EFE82EB11C4F16B50016F8DD /* Group */,
-				EF0901D21C5667CA00412241 /* Famous */,
-				EF3AF65B1C4A4A4A0043B488 /* Article */,
-				EFA17FC51C44D67C00D93181 /* Category */,
-				EF3AF6651C4A78DB0043B488 /* Network */,
-				EF3AF69B1C4BC3310043B488 /* TransitionAnimation */,
-				EFE490691C4C92DF00E96491 /* Controls */,
-				EFEEDE9F1C43B3B100B2B2B2 /* LXDAppDelegate.h */,
-				EFEEDEA01C43B3B100B2B2B2 /* LXDAppDelegate.m */,
-				EFA17FB21C4497D300D93181 /* LXDPrefixHeader.pch */,
-				EFEEDEA51C43B3B100B2B2B2 /* Main.storyboard */,
-				EFEEDEAA1C43B3B100B2B2B2 /* LaunchScreen.storyboard */,
+				EF3B7E0A1CD2E98500834790 /* Classes */,
 				EFEEDEAD1C43B3B100B2B2B2 /* Info.plist */,
 				EFD2D4EC1C44F8BA002E4646 /* Assets.xcassets */,
 				EFEEDE9C1C43B3B100B2B2B2 /* Supporting Files */,
@@ -795,7 +825,7 @@
 				TargetAttributes = {
 					EFEEDE981C43B3B100B2B2B2 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = K2TKJ5N5XK;
+						DevelopmentTeam = 23R3RZE6E9;
 					};
 					EFEEDEB11C43B3B100B2B2B2 = {
 						CreatedOnToolsVersion = 7.2;
@@ -915,38 +945,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFA17FB11C448FC600D93181 /* LXDMainController.m in Sources */,
-				EFE4906F1C4C92DF00E96491 /* LXDShadowAlertView.m in Sources */,
+				EF3B7E501CD2E98500834790 /* UIView+LXDEasyFrame.m in Sources */,
+				EF3B7E561CD2E98500834790 /* LXDGroupController.m in Sources */,
+				EF3B7E841CD2F8EA00834790 /* UILabel+LXDDesignedInitializer.m in Sources */,
+				EF3B7E4D1CD2E98500834790 /* UIColor+LXDNumberToColor.m in Sources */,
+				EF3B7E5F1CD2E98500834790 /* LXDScaleTransitionAnimation.m in Sources */,
+				EF3B7E4F1CD2E98500834790 /* UIImage+LXDRoundRectImage.m in Sources */,
 				EFEEDEA11C43B3B100B2B2B2 /* LXDAppDelegate.m in Sources */,
-				EF01EA011C53955A004E98BE /* LXDRoundButton.m in Sources */,
-				EF01E9FE1C539535004E98BE /* LXDArticleStorage.m in Sources */,
-				EF7749451C586E0E008A12ED /* LXDBaseTransitionAnimation.m in Sources */,
+				EF3B7E5D1CD2E98500834790 /* LXDBaseTransitionAnimation.m in Sources */,
+				EF3B7E7C1CD2EC8500834790 /* LXDArticleOperator.m in Sources */,
+				EF3B7E5B1CD2E98500834790 /* LXDMainController.m in Sources */,
+				EF3B7E5C1CD2E98500834790 /* LXDBlogRequester.m in Sources */,
 				EF3AF65A1C4A44F00043B488 /* MBProgressHUD.m in Sources */,
-				EF3AF66E1C4A7A8A0043B488 /* NSArray+LXDFilter.m in Sources */,
-				EFE82EBD1C4F1D660016F8DD /* LXDGroupLayout.m in Sources */,
-				EF3AF6681C4A78DB0043B488 /* LXDBlogRequester.m in Sources */,
-				EFE490721C4C933100E96491 /* LXDRefreshView.m in Sources */,
-				EF3AF6A01C4BC33C0043B488 /* LXDNavigationTransitionAnimation.m in Sources */,
-				EF3AF6971C4B78220043B488 /* UIFont+LXDAdjustFont.m in Sources */,
-				EFE82EC91C4F4D2B0016F8DD /* LXDSnapView.m in Sources */,
-				EF01E9FA1C539535004E98BE /* LXDArticle.m in Sources */,
-				EF3AF66B1C4A79040043B488 /* NSString+LXDVaild.m in Sources */,
-				EFE4906E1C4C92DF00E96491 /* LXDAlphaNavigationController.m in Sources */,
-				EFE82ECC1C4F5BBC0016F8DD /* LXDGroupArticleCell.m in Sources */,
-				EF0901D81C56680900412241 /* LXDFamousController.m in Sources */,
-				EFA17FC81C44D69200D93181 /* UIView+LXDEasyFrame.m in Sources */,
-				EF7749411C586D22008A12ED /* LXDScaleTransitionAnimation.m in Sources */,
-				EFE82EB71C4F16DE0016F8DD /* LXDGroupController.m in Sources */,
-				EFD2D4F01C44F9C0002E4646 /* LXDBlogCell.m in Sources */,
-				EF01E9FB1C539535004E98BE /* LXDArticleCompiler.m in Sources */,
-				EF01E9FD1C539535004E98BE /* LXDArticleOperator.m in Sources */,
-				EF01E9F91C539535004E98BE /* LXDArticleController.m in Sources */,
-				EFE82EC61C4F2B7E0016F8DD /* LXDGroupCell.m in Sources */,
-				EFD2D5071C450830002E4646 /* UIImage+LXDRoundRectImage.m in Sources */,
+				EF3B7E5A1CD2E98500834790 /* LXDSnapView.m in Sources */,
+				EF3B7E591CD2E98500834790 /* LXDGroupCell.m in Sources */,
+				EF3B7E4E1CD2E98500834790 /* UIFont+LXDAdjustFont.m in Sources */,
+				EF3B7E781CD2EC8500834790 /* LXDArticleController.m in Sources */,
+				EF3B7E811CD2F24F00834790 /* LXDLineBackgroundView.m in Sources */,
+				EF3B7E791CD2EC8500834790 /* LXDArticle.m in Sources */,
+				EF3B7E7D1CD2EC8500834790 /* LXDArticleStorage.m in Sources */,
+				EF3B7E521CD2E98500834790 /* LXDAlphaNavigationController.m in Sources */,
+				EF3B7E551CD2E98500834790 /* LXDFamousController.m in Sources */,
+				EF3B7E541CD2E98500834790 /* LXDShadowAlertView.m in Sources */,
+				EF3B7E7B1CD2EC8500834790 /* LXDArticleManager.m in Sources */,
+				EF3B7E511CD2E98500834790 /* LineBackgroundView.m in Sources */,
+				EF3B7E5E1CD2E98500834790 /* LXDNavigationTransitionAnimation.m in Sources */,
+				EF3B7E4A1CD2E98500834790 /* LXDBlogCell.m in Sources */,
+				EF3B7E891CD30DA200834790 /* LXDBaseController.m in Sources */,
+				EF3B7E531CD2E98500834790 /* LXDRefreshView.m in Sources */,
+				EF3B7E7E1CD2EC8500834790 /* LXDRoundButton.m in Sources */,
+				EF3B7E4B1CD2E98500834790 /* NSArray+LXDFilter.m in Sources */,
+				EF3B7E571CD2E98500834790 /* LXDGroupLayout.m in Sources */,
+				EF3B7E641CD2EB6300834790 /* LXDQueue.m in Sources */,
+				EF3B7E4C1CD2E98500834790 /* NSString+LXDVaild.m in Sources */,
+				EF3B7E491CD2E98500834790 /* LXDBlogController.m in Sources */,
 				EFEEDE9E1C43B3B100B2B2B2 /* main.m in Sources */,
-				EF01E9FC1C539535004E98BE /* LXDArticleManager.m in Sources */,
-				EFE82EBA1C4F1AA80016F8DD /* UIColor+LXDNumberToColor.m in Sources */,
-				EFD2D4EB1C44F6C7002E4646 /* LXDBlogController.m in Sources */,
+				EF3B7E7A1CD2EC8500834790 /* LXDArticleCompiler.m in Sources */,
+				EF3B7E581CD2E98500834790 /* LXDGroupArticleCell.m in Sources */,
+				EF3B7E8C1CD30E4100834790 /* LXDBaseTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,6 +1024,7 @@
 				EFEEDEA61C43B3B100B2B2B2 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		EFEEDEAA1C43B3B100B2B2B2 /* LaunchScreen.storyboard */ = {
@@ -996,6 +1033,7 @@
 				EFEEDEAB1C43B3B100B2B2B2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1086,12 +1124,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LXDPersonalBlog/LXDPrefixHeader.pch";
 				INFOPLIST_FILE = LXDPersonalBlog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sindrilin.com.LXDPersonalBlog;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sindrilin.LXDPersonalBlog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1100,12 +1140,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LXDPersonalBlog/LXDPrefixHeader.pch";
 				INFOPLIST_FILE = LXDPersonalBlog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sindrilin.com.LXDPersonalBlog;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sindrilin.LXDPersonalBlog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

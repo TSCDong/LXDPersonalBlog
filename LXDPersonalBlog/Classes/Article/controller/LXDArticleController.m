@@ -105,13 +105,14 @@ typedef NS_ENUM(NSInteger, LXDShareType)
 
 - (void)viewDidAppear: (BOOL)animated
 {
+    [[UIApplication sharedApplication] setStatusBarHidden: NO];
     [super viewDidAppear: animated];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(listenStatusHeightDidChange:) name: LXDNavigationBarHeightDidChangeNotification object: nil];
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(listenUserClickNavigationBar) name: LXDClickNavigationBarNotification object: nil];
 }
 
 - (void)viewWillDisappear: (BOOL)animated
 {
+    [[UIApplication sharedApplication] setStatusBarHidden: YES];
     [super viewWillDisappear: animated];
     MBHUDHIDE
     self.webView.scrollView.delegate = nil;
@@ -279,13 +280,6 @@ const CGFloat rotateDuration = 0.3;
     _barMaxY = height;
 }
 
-/// 用户点击导航栏时回调
-- (void)listenUserClickNavigationBar
-{
-    CGPoint topPoint = { -_webView.scrollView.contentInset.left, -_webView.scrollView.contentInset.top };
-    [_webView.scrollView setContentOffset: topPoint animated: YES];
-}
-
 
 #pragma mark - Getter
 /// 创建旋转动画
@@ -367,7 +361,7 @@ const CGFloat rotateDuration = 0.3;
 - (WKWebView *)webView
 {
     if (!_webView) {
-        _webView = [[WKWebView alloc] initWithFrame: self.view.bounds];
+        _webView = [[WKWebView alloc] initWithFrame: CGRectOffset(self.view.bounds, 0, -20)];
         _webView.navigationDelegate = self;
     }
     return _webView;

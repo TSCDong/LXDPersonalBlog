@@ -103,7 +103,7 @@ static FORCE_INLINE UIImage * kAuthorImage() {
 /// 动态计算高度
 + (CGFloat)heightWithContent: (NSString *)content
 {
-    static const CGFloat baseHeight = 170;
+    static const CGFloat baseHeight = 160;
     return [content boundingRectWithSize: CGSizeMake(LXD_SCREEN_WIDTH - 50, CGFLOAT_MAX) options: NSStringDrawingUsesLineFragmentOrigin attributes: @{ NSFontAttributeName: LXDBlogCell.contentFont } context: nil].size.height + baseHeight + 1;
 }
 

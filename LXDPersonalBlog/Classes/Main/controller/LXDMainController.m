@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupItemImages];
+    self.tabBar.translucent = NO;
     self.tabBar.tintColor = LXD_MAIN_COLOR;
 }
 

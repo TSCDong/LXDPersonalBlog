@@ -8,12 +8,14 @@
 
 #import "LXDGroupController.h"
 #import "LXDArticle.h"
+#import "LXDQueue.h"
 #import "LXDGroupCell.h"
 #import "LXDRefreshView.h"
 #import "LXDArticleManager.h"
 #import "LXDArticleOperator.h"
-#import "LXDGroupArticleCell.h"
 #import "LXDArticleController.h"
+#import "LXDGroupArticleCell.h"
+#import "LXDLineBackgroundView.h"
 #import "UIColor+LXDNumberToColor.h"
 #import "LXDAlphaNavigationController.h"
 #import "LXDNavigationTransitionAnimation.h"
@@ -55,17 +57,26 @@ static const CGFloat kArticleCellHeight = 85.;
 #pragma mark - View life
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat: @"分类"];
+    [LXDQueue executeInMainQueue: ^{
+        if ([self.navigationController isKindOfClass: NSClassFromString(@"LXDAlphaNavigationController")]) {
+            LXDLineBackgroundView * lineView = [LXDLineBackgroundView createViewWithFrame: CGRectMake(0, 0, LXD_SCREEN_WIDTH, 64) lineWidth: 4 lineGap: 4 lineColor: [[UIColor blackColor] colorWithAlphaComponent:0.015]];
+            [lineView setAttributeText: [[NSAttributedString alloc] initWithString: @"分类" attributes: @{ NSFontAttributeName: [UIFont systemFontOfSize: 22], NSForegroundColorAttributeName: [UIColor colorWithWhite: 0.3 alpha: 1] }]];
+            LXDAlphaNavigationController * alphaNav = (LXDAlphaNavigationController *)self.navigationController;
+            [alphaNav customBackgroundView: lineView];
+        }
+    }];
 }
 
 - (void)viewWillAppear: (BOOL)animated
 {
     [super viewWillAppear: animated];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.collectionView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
     if (self.manager.allArticles == nil) {
         MBHUDSHOW
     }
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationToUpdateArticleCategories) name: LXDFinishedRequestNotification object: nil];
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(notificationToScrollToTop) name: LXDClickNavigationBarNotification object: nil];
 }
 
 - (void)viewDidAppear: (BOOL)animated
@@ -77,7 +88,6 @@ static const CGFloat kArticleCellHeight = 85.;
 - (void)viewDidDisappear: (BOOL)animated
 {
     [super viewDidDisappear: animated];
-    [[NSNotificationCenter defaultCenter] removeObserver: self name: LXDClickNavigationBarNotification object: nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,13 +111,6 @@ static const CGFloat kArticleCellHeight = 85.;
         [self.collectionView reloadData];
         [_refresh endRefreshing];
     });
-}
-
-/// 点击导航栏回滚到顶部
-- (void)notificationToScrollToTop
-{
-    CGPoint topPoint = { -self.tableView.contentInset.left };
-    [self.tableView setContentOffset: topPoint animated: YES];
 }
 
 
@@ -178,6 +181,9 @@ static const CGFloat kArticleCellHeight = 85.;
 - (void)setFilterArticles: (NSArray *)filterArticles
 {
     self.tableView.alpha = 1;
+    if (self.tableView.contentInset.top == 0) {
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    }
     _filterArticles = filterArticles;
     [self.tableView reloadData];
 }
@@ -234,7 +240,7 @@ static const CGFloat kArticleCellHeight = 85.;
     startCenter.y += LXD_SCREEN_HEIGHT;
     cell.center = startCenter;
     
-    [UIView animateWithDuration: 0.5 delay: 0.35 * indexPath.item usingSpringWithDamping: 0.6 initialSpringVelocity: 0 options: UIViewAnimationOptionCurveLinear animations: ^{
+    [UIView animateWithDuration: 0.45 delay: 0.3 * indexPath.item usingSpringWithDamping: 0.6 initialSpringVelocity: 0 options: UIViewAnimationOptionCurveLinear animations: ^{
         cell.center = center;
     } completion: nil];
 }
@@ -278,23 +284,23 @@ static NSMutableString * displayTime;
 /// 文章显示动画效果
 - (void)tableView: (UITableView *)tableView willDisplayCell: (UITableViewCell *)cell forRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    if ([displayTime characterAtIndex: indexPath.row] != '0') { return; }
-    CGFloat duration = 0.2;
-    NSInteger topIndex = floor(tableView.contentOffset.y / kArticleCellHeight);
-    CGFloat delay = (indexPath.row - topIndex) * duration;
-    for (NSInteger idx = topIndex; idx < indexPath.row; idx++) {
-        if ([displayTime characterAtIndex: idx] != '0') {
-            delay -= duration;
-        }
-    }
-    
-    CGFloat centerX = cell.centerX;
-    cell.centerX = -LXD_SCREEN_WIDTH;
-    [UIView animateWithDuration: duration delay: delay usingSpringWithDamping: .6 initialSpringVelocity: .5 options: UIViewAnimationOptionCurveEaseInOut animations: ^{
-        cell.centerX = centerX;
-    } completion: ^(BOOL finished) {
-        [displayTime replaceCharactersInRange: NSMakeRange(indexPath.row, 1) withString: @"1"];
-    }];
+//    if ([displayTime characterAtIndex: indexPath.row] != '0') { return; }
+//    CGFloat duration = 0.2;
+//    NSInteger topIndex = floor(tableView.contentOffset.y / kArticleCellHeight);
+//    CGFloat delay = (indexPath.row - topIndex) * duration;
+//    for (NSInteger idx = topIndex; idx < indexPath.row; idx++) {
+//        if ([displayTime characterAtIndex: idx] != '0') {
+//            delay -= duration;
+//        }
+//    }
+//    
+//    CGFloat centerX = cell.centerX;
+//    cell.centerX = -LXD_SCREEN_WIDTH;
+//    [UIView animateWithDuration: duration delay: delay usingSpringWithDamping: .6 initialSpringVelocity: .5 options: UIViewAnimationOptionCurveEaseInOut animations: ^{
+//        cell.centerX = centerX;
+//    } completion: ^(BOOL finished) {
+//        [displayTime replaceCharactersInRange: NSMakeRange(indexPath.row, 1) withString: @"1"];
+//    }];
 }
 
 /// 返回单元格高度
@@ -321,10 +327,10 @@ static NSMutableString * displayTime;
 /// 返回类别文章数量
 - (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section
 {
-    displayTime = @"".mutableCopy;
-    for (int idx = 0; idx < self.filterArticles.count; idx++) {
-        [displayTime appendFormat: @"0"];
-    }
+//    displayTime = @"".mutableCopy;
+//    for (int idx = 0; idx < self.filterArticles.count; idx++) {
+//        [displayTime appendFormat: @"0"];
+//    }
     return self.filterArticles.count;
 }
 
@@ -333,6 +339,7 @@ static NSMutableString * displayTime;
 {
     LXDGroupArticleCell * cell = [tableView dequeueReusableCellWithIdentifier: kArticleCellIdentifier];
     [cell showArticle: self.filterArticles[indexPath.row]];
+    [cell cellWillDisplay];
     return cell;
 }
 

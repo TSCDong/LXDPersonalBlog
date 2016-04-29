@@ -204,7 +204,6 @@ static FORCE_INLINE CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFlo
     self.frame = frame;
     [scrollView addSubview: self];
     _scrollView = scrollView;
-    _insetsTop = scrollView.contentInset.top;
     
     [self.layer addSublayer: self.circleLayer];
     [self addSubview: self.refreshImageView];
@@ -334,6 +333,7 @@ static FORCE_INLINE CGPoint LXDPointOffset(CGPoint point, CGFloat xOffset, CGFlo
 {
     if (!_activityView.isAnimating) {
         [_activityView startAnimating];
+        _insetsTop = _scrollView.contentInset.top;
     }
 }
 
